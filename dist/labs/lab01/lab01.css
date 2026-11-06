@@ -35,18 +35,6 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   outline-offset: 3px;
 }
 
-.skip-link {
-  position: fixed;
-  z-index: 100;
-  left: 16px;
-  top: -80px;
-  padding: 12px 18px;
-  background: var(--lab-ink);
-  color: white;
-  transition: top 160ms ease;
-}
-.skip-link:focus { top: 16px; }
-
 .lab-masthead {
   min-height: 76px;
   display: grid;
@@ -197,7 +185,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 
 .booth-section { background: var(--lab-pink); border-top: 1px solid var(--lab-ink); border-bottom: 1px solid var(--lab-ink); }
 .booth-heading .section-kicker { color: var(--lab-ink); }
+.booth-controls { max-width: 320px; text-align: right; }
 .booth-controls button { padding: 13px 17px; border: 1px solid var(--lab-ink); background: var(--lab-paper); font-size: .68rem; font-weight: 800; text-transform: uppercase; }
+.booth-controls small { display: block; margin-top: 8px; font-size: .56rem; line-height: 1.45; }
 .evidence-strip { display: grid; grid-template-columns: repeat(6,minmax(160px,1fr)); gap: 13px; max-width: 1500px; margin: 0 auto; padding: 19px; background: var(--lab-ink); overflow-x: auto; }
 .evidence-strip figure { position: relative; min-width: 155px; margin: 0; padding: 10px; background: #f4f0e8; color: var(--lab-ink); }
 .evidence-strip figure::before, .evidence-strip figure::after { content:""; position: absolute; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(90deg,transparent 0 7px,var(--lab-ink) 7px 12px); }
@@ -292,13 +282,15 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 
 @media print {
-  @page { size: A4 landscape; margin: 9mm; }
-  body.lab-page { background: white; }
+  @page { size: A4 portrait; margin: 10mm; }
+  body.lab-page { background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .lab-footer, .booth-heading, .toast { display: none !important; }
   .booth-section { padding: 0 0 8mm; background: white; border: 0; break-after: page; }
-  .evidence-strip { grid-template-columns: repeat(3,1fr); gap: 4mm; padding: 5mm; overflow: visible; }
+  .evidence-strip { grid-template-columns: repeat(2,1fr); gap: 4mm; padding: 5mm; overflow: visible; }
   .evidence-strip figure { min-width: 0; break-inside: avoid; }
   .report-section { margin: 0; box-shadow: none; }
+  .report-grid { grid-template-columns: 1fr; }
+  .code-card { border-right: 0; border-bottom: 1px solid var(--lab-ink); }
   .code-card pre { font-size: 6.5pt; }
   .reflection-card textarea { min-height: 25mm; }
   .report-header h2 { font-size: 24pt; }
