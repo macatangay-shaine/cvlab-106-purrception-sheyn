@@ -285,13 +285,21 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   @page { size: A4 portrait; margin: 10mm; }
   body.lab-page { background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .lab-footer, .booth-heading, .toast { display: none !important; }
-  .booth-section { padding: 0 0 8mm; background: white; border: 0; break-after: page; }
+  .booth-section { min-height: 0; padding: 0; background: white; border: 0; break-after: page; }
   .evidence-strip { grid-template-columns: repeat(2,1fr); gap: 4mm; padding: 5mm; overflow: visible; }
   .evidence-strip figure { min-width: 0; break-inside: avoid; }
-  .report-section { margin: 0; box-shadow: none; }
-  .report-grid { grid-template-columns: 1fr; }
-  .code-card { border-right: 0; border-bottom: 1px solid var(--lab-ink); }
-  .code-card pre { font-size: 6.5pt; }
-  .reflection-card textarea { min-height: 25mm; }
-  .report-header h2 { font-size: 24pt; }
+  .report-section { display: flex; height: 277mm; margin: 0; overflow: hidden; flex-direction: column; box-shadow: none; break-before: page; break-inside: avoid; }
+  .report-header { flex: 0 0 auto; padding: 5mm; }
+  .report-header h2 { font-size: 20pt; }
+  .report-fields { gap: 3mm; }
+  .report-fields input { width: 37mm; padding: 1mm 0; }
+  .report-grid { display: grid; min-height: 0; flex: 1 1 auto; grid-template-columns: .92fr 1.08fr; }
+  .code-card { min-width: 0; border-right: 1px solid var(--lab-ink); border-bottom: 0; }
+  .code-card__head { padding: 2.5mm 4mm; }
+  .code-card__head button { display: none; }
+  .code-card pre { height: calc(100% - 9mm); padding: 4mm; overflow: hidden; font-size: 5.2pt; line-height: 1.32; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .reflection-card { align-content: start; gap: 3mm; padding: 4mm; }
+  .reflection-card label { font-size: 9pt; }
+  .reflection-card textarea { min-height: 47mm; margin-top: 1.5mm; padding: 2mm; font-size: 8pt; line-height: 5mm; background-size: 100% 5mm; }
+  .report-footer { flex: 0 0 auto; padding: 2.5mm 5mm; }
 }

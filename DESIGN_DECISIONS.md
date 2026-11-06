@@ -56,6 +56,7 @@ Reference received: 2026-11-06
 - 2026-11-07: User approved all recommended Lab 01 choices and combined the Pink Pixel Studio editor with the retro photo-booth concept.
 - 2026-11-07: Lab 01 implemented and browser-tested. The OpenCV self-test passed image loading, pixel editing, grayscale conversion, resizing, 90-degree rotation, cropping, and the complete 6/6 evidence workflow. Awaiting user review before any Lab 02 work.
 - 2026-11-07: At the user's request, the Lab 01 export was revised to A4 portrait with explicit “Save as PDF” instructions, and the unwanted visible skip-workspace shortcut was removed from the lab page.
+- 2026-11-07: The user requested a strict two-page export. Print QA confirmed exactly two A4 portrait pages: evidence on page 1 and the code/report responses on page 2.
 
 ## Lab 01 — Image Manipulation
 
@@ -89,5 +90,5 @@ Approved on 2026-11-07:
 - Workspace: Left operation toolbar, large center canvas, right pixel/properties inspector, and bottom result strip.
 - Interactions: Drag-and-drop/upload, clickable pixel inspection, draggable crop box, resize controls, grayscale, 90-degree rotation, undo, and reset.
 - Results: Printable contact sheet showing original, grayscale, pixel edit, crop, resize, and rotation, with dimensions and equivalent Python/OpenCV code.
-- Print format: A4 portrait, opened through a clearly labeled “Save as PDF” action with browser-dialog instructions.
+- Print format: Exactly two A4 portrait pages, opened through a clearly labeled “Save as PDF” action with browser-dialog instructions. Page 1 contains the six evidence images; page 2 contains the Python code and written responses.
 - Technical approach: OpenCV.js for live browser processing, with explicit explanations of the RGBA browser representation and Python OpenCV's BGR ordering.
