@@ -1,0 +1,14 @@
+# Instructor-provided laboratory documents stay local.
+*.docx
+
+# Local hosting identity and browser QA artifacts.
+.openai/
+.edge-preview*/
+preview-*.png
+*.log
+
+# Common local files.
+.DS_Store
+Thumbs.db
+__pycache__/
+

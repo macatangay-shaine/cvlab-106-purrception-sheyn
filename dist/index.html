@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CVLAB.106 — PURRCEPTION.sheyn, a creative computer vision laboratory database."
+    />
+    <meta name="theme-color" content="#f1ede6" />
+    <title>CVLAB.106 — PURRCEPTION.sheyn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="masthead" id="top">
+      <a class="brand" href="#top" aria-label="CVLAB.106 home">
+        <svg class="brand__mark" viewBox="0 0 46 36" aria-hidden="true">
+          <path d="M4 7h17v5H9v17H4V7Z" />
+          <path d="M18 16h6l5 8L40 5h6L29 33 18 16Z" />
+        </svg>
+        <span class="brand__name">CVLAB.106</span>
+        <span class="brand__owner">PURRCEPTION.sheyn</span>
+      </a>
+
+      <div class="masthead__cell masthead__descriptor">
+        <span>Public notebook</span>
+        <strong>Computer Vision Lab Database</strong>
+      </div>
+      <div class="masthead__cell masthead__version">
+        <span>Foundation 0.1</span>
+        <strong>Planning with purpose</strong>
+      </div>
+      <button class="masthead__button" type="button" data-open-dialog="index-dialog">
+        <span>Index</span>
+        <span aria-hidden="true">↘</span>
+      </button>
+      <button class="masthead__button masthead__menu" type="button" data-open-dialog="menu-dialog">
+        <span>Menu</span>
+        <span class="menu-glyph" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </header>
+
+    <main id="main-content">
+      <section class="hero ruled-section" aria-labelledby="hero-title">
+        <div class="hero__copy reveal">
+          <p class="eyebrow"><span>Computer vision database</span><span class="globe" aria-hidden="true">◎</span></p>
+          <h1 id="hero-title">
+            Tools, pixels,<br />
+            experiments, notes,<br />
+            strange useful things,<br />
+            and unfinished vision.
+          </h1>
+          <div class="hero__notes" aria-label="Our process">
+            <span aria-hidden="true">＋</span>
+            <p>observing<br />processing<br />understanding</p>
+          </div>
+        </div>
+
+        <div class="hero__objects" aria-label="Computer vision objects and sketches">
+          <svg class="object object--asterisk" viewBox="0 0 70 70" aria-hidden="true">
+            <path d="M35 8v54M8 35h54M16 16l38 38M54 16 16 54" />
+          </svg>
+
+          <svg class="object object--eye" viewBox="0 0 140 90" aria-hidden="true">
+            <path class="fill-blue" d="M8 45S31 11 70 11s62 34 62 34-23 34-62 34S8 45 8 45Z" />
+            <path class="paper" d="M17 45s20-26 53-26 53 26 53 26-20 26-53 26-53-26-53-26Z" />
+            <circle class="fill-blue" cx="70" cy="45" r="19" />
+            <circle class="ink" cx="70" cy="45" r="8" />
+            <path class="scan" d="M12 45h116" />
+          </svg>
+
+          <svg class="object object--pixels" viewBox="0 0 110 110" aria-hidden="true">
+            <path class="ink-line" d="M55 3 101 30v51L55 108 9 81V30L55 3Z" />
+            <path class="fill-pink" d="m55 12 19 11-19 11-19-11 19-11Z" />
+            <path class="fill-yellow" d="m78 26 18 10-18 11-19-11 19-10Z" />
+            <path class="fill-orange" d="m32 26 19 10-19 11-18-11 18-10Z" />
+            <path class="fill-purple" d="m55 40 19 11-19 11-19-11 19-11Z" />
+            <path class="fill-green" d="m32 54 19 11v22L32 76V54Z" />
+            <path class="fill-blue" d="m78 54 18-11v22L78 76V54Z" />
+            <path class="fill-teal" d="m55 68 19 11v20L55 88V68Z" />
+          </svg>
+
+          <svg class="object object--camera" viewBox="0 0 150 105" aria-hidden="true">
+            <path class="fill-orange" d="M19 30h112a8 8 0 0 1 8 8v56H11V38a8 8 0 0 1 8-8Z" />
+            <path class="ink" d="M38 18h28l8 12H30l8-12Z" />
+            <circle class="paper" cx="80" cy="62" r="26" />
+            <circle class="fill-blue" cx="80" cy="62" r="17" />
+            <circle class="ink" cx="80" cy="62" r="8" />
+            <rect class="paper" x="116" y="40" width="12" height="8" rx="2" />
+          </svg>
+
+          <svg class="object object--magnifier" viewBox="0 0 95 125" aria-hidden="true">
+            <circle class="paper" cx="40" cy="40" r="31" />
+            <circle class="fill-yellow" cx="40" cy="40" r="20" />
+            <path class="ink-line thick" d="m62 64 25 45" />
+            <path class="ink-line" d="M32 34h16M40 26v16" />
+          </svg>
+
+          <svg class="object object--matrix" viewBox="0 0 90 90" aria-hidden="true">
+            <path class="ink-line" d="M20 8H9v74h11M70 8h11v74H70" />
+            <g class="matrix-dots">
+              <circle cx="30" cy="24" r="5" /><circle cx="46" cy="24" r="5" /><circle cx="62" cy="24" r="5" />
+              <circle cx="30" cy="45" r="5" /><circle cx="46" cy="45" r="5" /><circle cx="62" cy="45" r="5" />
+              <circle cx="30" cy="66" r="5" /><circle cx="46" cy="66" r="5" /><circle cx="62" cy="66" r="5" />
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="featured ruled-section" id="featured" aria-labelledby="featured-title">
+        <div class="section-intro reveal">
+          <p class="section-kicker">Featured</p>
+          <h2 id="featured-title">Experiments on the workbench.</h2>
+          <p>Seven activities, shaped one careful decision at a time.</p>
+          <a class="outline-link" href="#laboratories">View all labs <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <div class="carousel-shell reveal">
+          <div class="featured-track" data-carousel aria-label="Featured laboratory activities">
+            <article class="featured-card featured-card--pink">
+              <div class="featured-card__art image-art" aria-hidden="true">
+                <div class="mini-image mini-image--original"><span>RGB</span></div>
+                <span class="process-arrow">→</span>
+                <div class="mini-image mini-image--edited"><span>FX</span></div>
+              </div>
+              <p class="tag">Lab 01 · Studio</p>
+              <h3>Image Manipulation</h3>
+              <p>Pixels, channels, transformations, and the craft of looking closer.</p>
+              <footer><span>Planning pending</span><span aria-hidden="true">→</span></footer>
+            </article>
+
+            <article class="featured-card featured-card--yellow">
+              <div class="featured-card__art edge-art" aria-hidden="true">
+                <svg viewBox="0 0 300 170">
+                  <path d="M18 142C54 79 76 114 99 45s61 83 90 8 38 77 93-20" />
+                  <path d="M18 128c32-38 70 2 96-57s63 72 98 10 40 43 70-8" />
+                </svg>
+              </div>
+              <p class="tag">Lab 02 · Explorer</p>
+              <h3>Edge Detection</h3>
+              <p>Trace the boundaries where light, shape, and structure begin to change.</p>
+              <footer><span>Planning pending</span><span aria-hidden="true">→</span></footer>
+            </article>
+
+            <article class="featured-card featured-card--orange">
+              <div class="featured-card__art histogram-art" aria-hidden="true">
+                <i style="--h: 22%"></i><i style="--h: 35%"></i><i style="--h: 64%"></i><i style="--h: 88%"></i>
+                <i style="--h: 72%"></i><i style="--h: 53%"></i><i style="--h: 30%"></i><i style="--h: 17%"></i>
+              </div>
+              <p class="tag">Lab 03 · Workshop</p>
+              <h3>Histogram Equalization</h3>
+              <p>Read the distribution of light and reveal the contrast hidden inside an image.</p>
+              <footer><span>Planning pending</span><span aria-hidden="true">→</span></footer>
+            </article>
+
+            <article class="featured-card featured-card--green">
+              <div class="featured-card__art keypoint-art" aria-hidden="true">
+                <span style="--x: 22%; --y: 31%; --s: 26px"></span>
+                <span style="--x: 61%; --y: 20%; --s: 18px"></span>
+                <span style="--x: 49%; --y: 64%; --s: 32px"></span>
+                <span style="--x: 78%; --y: 71%; --s: 22px"></span>
+                <svg viewBox="0 0 300 170"><path d="m28 137 64-96 43 70 42-53 91 79H28Z" /></svg>
+              </div>
+              <p class="tag">Lab 04 · Laboratory</p>
+              <h3>Feature Detection</h3>
+              <p>Locate distinctive points that remain recognizable across a changing view.</p>
+              <footer><span>Planning pending</span><span aria-hidden="true">→</span></footer>
+            </article>
+          </div>
+          <div class="carousel-controls" aria-label="Carousel controls">
+            <button type="button" data-carousel-prev aria-label="Previous featured laboratory">←</button>
+            <button type="button" data-carousel-next aria-label="Next featured laboratory">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="laboratories" id="laboratories" aria-labelledby="laboratories-title">
+        <div class="catalog-heading ruled-section reveal">
+          <p class="section-kicker">Laboratory index · 01–07</p>
+          <h2 id="laboratories-title">A growing archive of ways to see.</h2>
+          <p>Each activity will receive its own approved identity, workspace, interactions, and results display.</p>
+        </div>
+
+        <div class="lab-grid">
+          <article class="lab-panel lab-panel--pink reveal" id="lab-01">
+            <header><span class="lab-letter">I</span><span>01</span></header>
+            <h3>Image<br />Manipulation</h3>
+            <p>Pixels, channels, geometric transforms, and creative image operations.</p>
+            <svg class="lab-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <rect x="10" y="15" width="84" height="65" rx="3" /><path d="m18 69 23-24 16 15 13-11 17 20H18Z" />
+              <circle cx="72" cy="34" r="7" /><path d="m89 76 21 14M100 73l10 17" />
+            </svg>
+            <footer><span>Design planning next</span><span aria-hidden="true">↗</span></footer>
+          </article>
+
+          <article class="lab-panel lab-panel--yellow reveal" id="lab-02">
+            <header><span class="lab-letter">E</span><span>02</span></header>
+            <h3>Edge<br />Detection</h3>
+            <p>Gradient operators, boundaries, thresholds, and visual structure.</p>
+            <svg class="lab-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <path d="M8 80c15-7 21-45 40-43s18 30 32 27 16-38 32-45" />
+              <path d="M8 65c18-7 18-31 37-29s20 24 34 20 14-26 33-29" />
+            </svg>
+            <footer><span>Pending approval flow</span><span aria-hidden="true">↗</span></footer>
+          </article>
+
+          <article class="lab-panel lab-panel--orange reveal" id="lab-03">
+            <header><span class="lab-letter">H</span><span>03</span></header>
+            <h3>Histogram<br />Equalization</h3>
+            <p>Intensity distributions, contrast, and images waiting to be revealed.</p>
+            <svg class="lab-icon bars-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <path d="M12 88V61h12v27M31 88V39h12v49M50 88V18h12v70M69 88V31h12v57M88 88V54h12v34" />
+              <path d="M7 88h106" />
+            </svg>
+            <footer><span>Pending approval flow</span><span aria-hidden="true">↗</span></footer>
+          </article>
+
+          <article class="lab-panel lab-panel--green reveal" id="lab-04">
+            <header><span class="lab-letter">F</span><span>04</span></header>
+            <h3>Feature<br />Detection</h3>
+            <p>Keypoints, descriptors, and robust visual landmarks.</p>
+            <svg class="lab-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <path d="m10 82 27-61 25 44 17-27 31 44H10Z" />
+              <circle cx="37" cy="21" r="8" /><circle cx="62" cy="65" r="6" /><circle cx="79" cy="38" r="9" />
+            </svg>
+            <footer><span>Pending approval flow</span><span aria-hidden="true">↗</span></footer>
+          </article>
+
+          <article class="lab-panel lab-panel--purple reveal" id="lab-05">
+            <header><span class="lab-letter">P</span><span>05</span></header>
+            <h3>PCA &amp;<br />Eigenfaces</h3>
+            <p>Dimensions, variance, reconstruction, and patterns across faces.</p>
+            <svg class="lab-icon face-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <path d="M60 8c25 0 40 19 40 43 0 27-17 42-40 42S20 78 20 51C20 27 35 8 60 8Z" />
+              <path d="M39 43h12M69 43h12M44 69c10 8 22 8 32 0M60 27v35" />
+            </svg>
+            <footer><span>Pending approval flow</span><span aria-hidden="true">↗</span></footer>
+          </article>
+
+          <article class="lab-panel lab-panel--blue reveal" id="lab-06">
+            <header><span class="lab-letter">O</span><span>06</span></header>
+            <h3>Object<br />Detection</h3>
+            <p>Bounding boxes, confidence, classes, and a machine learning to notice.</p>
+            <svg class="lab-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <rect x="11" y="11" width="98" height="78" /><rect x="39" y="28" width="44" height="49" />
+              <path d="M39 20v15M31 28h16M83 69v16M75 77h16" />
+            </svg>
+            <footer><span>Pending approval flow</span><span aria-hidden="true">↗</span></footer>
+          </article>
+
+          <article class="lab-panel lab-panel--teal reveal" id="lab-07">
+            <header><span class="lab-letter">S</span><span>07</span></header>
+            <h3>Image<br />Segmentation</h3>
+            <p>Regions, masks, thresholds, and meaningful partitions of a scene.</p>
+            <svg class="lab-icon" viewBox="0 0 120 100" aria-hidden="true">
+              <path d="M10 53C10 28 28 9 53 9c15 0 22 12 37 14 14 2 21 15 20 30-2 28-20 38-45 38C35 91 10 80 10 53Z" />
+              <path d="M55 10c-1 25 16 25 16 45S57 73 64 90M12 57c21-7 29 9 43 8s21-14 54-9" />
+            </svg>
+            <footer><span>Pending approval flow</span><span aria-hidden="true">↗</span></footer>
+          </article>
+        </div>
+      </section>
+
+      <section class="notebook ruled-section" id="notebook" aria-labelledby="notebook-title">
+        <div class="note-card reveal" aria-hidden="true">
+          <p>□ required first</p>
+          <p>□ ideas discussed</p>
+          <p>□ function tested</p>
+          <p>□ activity approved</p>
+          <span class="tape"></span>
+        </div>
+        <div class="notebook__symbol reveal" aria-hidden="true">＊</div>
+        <div class="notebook__copy reveal">
+          <p class="section-kicker">The working agreement</p>
+          <h2 id="notebook-title">Not a finished portfolio.<br />A laboratory that grows with intention.</h2>
+          <p>
+            Every experiment begins with its required academic work, then earns its personality through discussion,
+            implementation, testing, and approval.
+          </p>
+          <span class="decision-note">Decision log maintained in DESIGN_DECISIONS.md <span aria-hidden="true">✓</span></span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-reminder">
+        <p class="section-kicker">Reminder</p>
+        <strong>Good vision begins<br />with careful observation.</strong>
+      </div>
+      <div class="footer-brand">
+        <strong>CVLAB.106 — PURRCEPTION.sheyn</strong>
+        <p>Computer Vision Lab Database<br />Always collecting. Always processing.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#top">Home</a>
+        <a href="#featured">Featured</a>
+        <a href="#laboratories">Laboratories</a>
+        <a href="#notebook">Notebook</a>
+      </nav>
+      <div class="footer-bottom">
+        <span>CSST106 · Computer Vision</span>
+        <span>Designed with curiosity and too many pixels.</span>
+      </div>
+      <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+    </footer>
+
+    <dialog class="site-dialog menu-dialog" id="menu-dialog">
+      <div class="dialog-head">
+        <p>CVLAB.106 / Navigation</p>
+        <button type="button" data-close-dialog aria-label="Close menu">Close ×</button>
+      </div>
+      <div class="menu-dialog__body">
+        <p class="menu-dialog__label">Browse the notebook</p>
+        <nav aria-label="Main navigation">
+          <a href="#top"><span>01</span>Home</a>
+          <a href="#featured"><span>02</span>Featured experiments</a>
+          <a href="#laboratories"><span>03</span>Laboratory index</a>
+          <a href="#notebook"><span>04</span>Working agreement</a>
+        </nav>
+        <div class="menu-dialog__aside">
+          <p>Seven activities.<br />One shared visual language.<br />No skipped decisions.</p>
+          <span class="handwritten">collecting · connecting · building</span>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="site-dialog index-dialog" id="index-dialog">
+      <div class="dialog-head">
+        <p>Laboratory index / 01–07</p>
+        <button type="button" data-close-dialog aria-label="Close index">Close ×</button>
+      </div>
+      <ol class="index-list">
+        <li><a href="#lab-01"><span>01</span><strong>Image Manipulation</strong><em>Planning next</em></a></li>
+        <li><a href="#lab-02"><span>02</span><strong>Edge Detection</strong><em>Pending</em></a></li>
+        <li><a href="#lab-03"><span>03</span><strong>Histogram Equalization</strong><em>Pending</em></a></li>
+        <li><a href="#lab-04"><span>04</span><strong>Feature Detection</strong><em>Pending</em></a></li>
+        <li><a href="#lab-05"><span>05</span><strong>PCA &amp; Eigenfaces</strong><em>Pending</em></a></li>
+        <li><a href="#lab-06"><span>06</span><strong>Object Detection</strong><em>Pending</em></a></li>
+        <li><a href="#lab-07"><span>07</span><strong>Image Segmentation</strong><em>Pending</em></a></li>
+      </ol>
+    </dialog>
+  </body>
+</html>
