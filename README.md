@@ -2,6 +2,10 @@
 
 Computer Vision Lab Database for CSST106, presented as a playful editorial laboratory notebook inspired by the supplied Mijonju reference.
 
+## Live website
+
+[Open CVLAB.106 — PURRCEPTION.sheyn](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/)
+
 ## Technology
 
 The website uses plain HTML, CSS, and JavaScript. Python is **not** part of the website runtime. It was used only as an optional local static-file preview server during development.
@@ -27,4 +31,3 @@ Pushes to the `main` branch automatically deploy the contents of `dist/` to GitH
 - Laboratories 02–07: pending
 
 The instructor-provided laboratory documents remain local and are intentionally excluded from this public repository.
-
