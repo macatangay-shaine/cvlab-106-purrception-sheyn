@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lab 01 — Pink Pixel Studio, an interactive OpenCV image manipulation laboratory."
+    />
+    <meta name="theme-color" content="#dc80aa" />
+    <title>Lab 01 — Pink Pixel Studio | CVLAB.106</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="lab01.css" />
+  </head>
+
+  <body class="lab-page">
+    <a class="skip-link" href="#workspace">Skip to workspace</a>
+
+    <header class="lab-masthead">
+      <a class="lab-brand" href="../../index.html" aria-label="Back to CVLAB.106 home">
+        <svg viewBox="0 0 46 36" aria-hidden="true"><path d="M4 7h17v5H9v17H4V7Z" /><path d="M18 16h6l5 8L40 5h6L29 33 18 16Z" /></svg>
+        <span><strong>CVLAB.106</strong><small>PURRCEPTION.sheyn</small></span>
+      </a>
+      <div class="lab-masthead__meta"><span>Laboratory 01</span><strong>Image Manipulation</strong></div>
+      <div class="lab-masthead__meta lab-masthead__engine">
+        <span class="engine-dot" aria-hidden="true"></span>
+        <span id="engineStatus">Loading OpenCV.js…</span>
+      </div>
+      <a class="lab-masthead__back" href="../../index.html"><span>Back to database</span><b aria-hidden="true">↖</b></a>
+    </header>
+
+    <main>
+      <section class="lab-hero" aria-labelledby="lab-title">
+        <div class="lab-hero__copy">
+          <p class="lab-chip">Pink Pixel Studio · Photo Booth Edition</p>
+          <p class="lab-number" aria-hidden="true">01</p>
+          <h1 id="lab-title">Inspect the pixel.<br />Develop the image.</h1>
+          <p class="lab-hero__lede">
+            Load an image, explore its digital structure, manipulate it with OpenCV, and collect every result
+            in a report-ready retro photo strip.
+          </p>
+          <div class="scribble"><span aria-hidden="true">＋</span><p>load it<br />look closer<br />change it</p></div>
+        </div>
+        <div class="lab-hero__art" aria-hidden="true">
+          <div class="booth-camera">
+            <span class="booth-camera__flash"></span>
+            <span class="booth-camera__lens"><i></i></span>
+            <span class="booth-camera__button"></span>
+          </div>
+          <div class="film-strip film-strip--hero">
+            <i></i><i></i><i></i>
+          </div>
+          <svg class="pixel-spark" viewBox="0 0 90 90">
+            <path d="M45 5v80M5 45h80M17 17l56 56M73 17 17 73" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="learning-ribbon" aria-label="Laboratory objectives">
+        <article><span>01</span><strong>Represent</strong><p>Images as arrays of pixel values.</p></article>
+        <article><span>02</span><strong>Inspect</strong><p>Resolution, channels, coordinates, RGB and BGR.</p></article>
+        <article><span>03</span><strong>Manipulate</strong><p>Grayscale, crop, resize, rotate, and recolor.</p></article>
+        <article><span>04</span><strong>Document</strong><p>Collect evidence for the hardcopy report.</p></article>
+      </section>
+
+      <section class="studio-section" id="workspace" aria-labelledby="workspace-title">
+        <div class="studio-heading">
+          <div>
+            <p class="section-kicker">Interactive workspace / OpenCV.js</p>
+            <h2 id="workspace-title">The editing desk</h2>
+          </div>
+          <div class="progress-card" aria-live="polite">
+            <span>Activity progress</span>
+            <strong><b id="progressCount">0</b> / 6 evidence shots</strong>
+            <div class="progress-track"><i id="progressBar"></i></div>
+          </div>
+        </div>
+
+        <div class="editor-shell" id="dropSurface">
+          <aside class="tool-rail" aria-label="Image operation tools">
+            <div class="tool-rail__head"><span>Tools</span><span>01—06</span></div>
+
+            <label class="upload-tool" for="fileInput">
+              <span class="tool-icon">＋</span>
+              <strong>Load image</strong>
+              <small>Drop JPG, PNG, or WEBP</small>
+              <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" />
+            </label>
+
+            <div class="tool-group">
+              <p>Explore</p>
+              <button class="tool-button is-active" type="button" data-mode="inspect" data-needs-image disabled>
+                <span class="tool-icon">⌖</span><span><strong>Pixel</strong><small>Inspect coordinates</small></span>
+              </button>
+              <button class="tool-button" type="button" data-mode="crop" data-needs-image disabled>
+                <span class="tool-icon">⌗</span><span><strong>Crop</strong><small>Drag a region</small></span>
+              </button>
+              <button class="action-button crop-apply" id="applyCropButton" type="button" disabled>Apply selected crop</button>
+            </div>
+
+            <div class="tool-group">
+              <p>Transform</p>
+              <button class="tool-button" id="grayscaleButton" type="button" data-needs-image disabled>
+                <span class="tool-icon">◐</span><span><strong>Grayscale</strong><small>RGBA → Gray</small></span>
+              </button>
+              <button class="tool-button" id="rotateButton" type="button" data-needs-image disabled>
+                <span class="tool-icon">↻</span><span><strong>Rotate 90°</strong><small>Clockwise</small></span>
+              </button>
+            </div>
+
+            <fieldset class="resize-tool" data-needs-image-fieldset disabled>
+              <legend>Resize</legend>
+              <label>W <input id="resizeWidth" type="number" min="1" max="5000" value="640" /></label>
+              <label>H <input id="resizeHeight" type="number" min="1" max="5000" value="480" /></label>
+              <label class="ratio-lock"><input id="ratioLock" type="checkbox" checked /> Lock ratio</label>
+              <button class="action-button" id="resizeButton" type="button">Apply resize</button>
+            </fieldset>
+
+            <div class="history-actions">
+              <button id="undoButton" type="button" disabled>← Undo</button>
+              <button id="resetButton" type="button" disabled>Reset ↺</button>
+            </div>
+          </aside>
+
+          <section class="canvas-desk" aria-label="Image canvas">
+            <header class="canvas-desk__head">
+              <div><span>Canvas</span><strong id="currentOperation">Waiting for an image</strong></div>
+              <div class="canvas-dimensions" id="canvasDimensions">— × — px</div>
+            </header>
+
+            <div class="canvas-stage" id="canvasStage">
+              <div class="canvas-placeholder" id="canvasPlaceholder">
+                <svg viewBox="0 0 150 120" aria-hidden="true">
+                  <rect x="8" y="12" width="116" height="85" />
+                  <path d="m18 86 31-35 22 21 18-15 25 29H18Z" />
+                  <circle cx="91" cy="40" r="10" />
+                  <path d="M124 35h18v73H35V97" />
+                </svg>
+                <strong>Drop an image on the desk</strong>
+                <span>or use “Load image” in the toolbar</span>
+              </div>
+              <div class="canvas-stack" id="canvasStack" hidden>
+                <canvas id="workCanvas" aria-label="Current edited image"></canvas>
+                <canvas id="overlayCanvas" aria-hidden="true"></canvas>
+              </div>
+              <div class="drop-curtain" id="dropCurtain">Release to develop your image</div>
+            </div>
+
+            <footer class="canvas-desk__foot">
+              <p id="canvasHint">Upload a color image to begin.</p>
+              <ol class="history-list" id="historyList" aria-label="Operation history"></ol>
+            </footer>
+          </section>
+
+          <aside class="inspector" aria-label="Pixel and image inspector">
+            <div class="inspector__head"><span>Inspector</span><span>BGR / RGB</span></div>
+
+            <section class="pixel-panel">
+              <div class="pixel-heading">
+                <div><span>Coordinate</span><strong id="pixelCoordinate">x — / y —</strong></div>
+                <span class="pixel-swatch" id="pixelSwatch"></span>
+              </div>
+              <div class="pixel-grid" id="pixelGrid" aria-label="Magnified seven by seven pixel area"></div>
+              <dl class="channel-values">
+                <div><dt>Browser RGBA</dt><dd id="rgbaValue">—, —, —, —</dd></div>
+                <div><dt>Python BGR</dt><dd id="bgrValue">—, —, —</dd></div>
+              </dl>
+            </section>
+
+            <fieldset class="pixel-editor" id="pixelEditor" disabled>
+              <legend>New pixel color</legend>
+              <input id="colorPicker" type="color" value="#e65b91" aria-label="Pixel color" />
+              <label>R <input id="redValue" type="number" min="0" max="255" value="230" /></label>
+              <label>G <input id="greenValue" type="number" min="0" max="255" value="91" /></label>
+              <label>B <input id="blueValue" type="number" min="0" max="255" value="145" /></label>
+              <button class="action-button" id="applyPixelButton" type="button" disabled>Change selected pixel</button>
+            </fieldset>
+
+            <section class="properties-panel">
+              <h3>Image properties</h3>
+              <dl>
+                <div><dt>Shape</dt><dd id="shapeValue">—</dd></div>
+                <div><dt>Resolution</dt><dd id="resolutionValue">—</dd></div>
+                <div><dt>Channels</dt><dd id="channelCount">—</dd></div>
+                <div><dt>Source</dt><dd id="sourceDimensions">—</dd></div>
+              </dl>
+              <p>
+                The browser canvas stores <b>RGBA</b>. Native Python OpenCV reads color images as <b>BGR</b>, so the
+                inspector shows both orders.
+              </p>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="booth-section" aria-labelledby="booth-title">
+        <div class="booth-heading">
+          <div>
+            <p class="section-kicker">Retro evidence booth</p>
+            <h2 id="booth-title">Six shots. One complete experiment.</h2>
+          </div>
+          <div class="booth-controls">
+            <button type="button" id="printButton">Print laboratory sheet <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+
+        <div class="evidence-strip" id="evidenceStrip">
+          <figure data-evidence-card="original"><span class="shot-number">01</span><div><img alt="Original evidence" /><em>Awaiting image</em></div><figcaption><strong>Original</strong><small>Not captured</small></figcaption></figure>
+          <figure data-evidence-card="grayscale"><span class="shot-number">02</span><div><img alt="Grayscale evidence" /><em>Awaiting operation</em></div><figcaption><strong>Grayscale</strong><small>Not captured</small></figcaption></figure>
+          <figure data-evidence-card="pixel"><span class="shot-number">03</span><div><img alt="Pixel edit evidence" /><em>Awaiting operation</em></div><figcaption><strong>Pixel edit</strong><small>Not captured</small></figcaption></figure>
+          <figure data-evidence-card="crop"><span class="shot-number">04</span><div><img alt="Cropped evidence" /><em>Awaiting operation</em></div><figcaption><strong>Crop / ROI</strong><small>Not captured</small></figcaption></figure>
+          <figure data-evidence-card="resize"><span class="shot-number">05</span><div><img alt="Resized evidence" /><em>Awaiting operation</em></div><figcaption><strong>Resize</strong><small>Not captured</small></figcaption></figure>
+          <figure data-evidence-card="rotate"><span class="shot-number">06</span><div><img alt="Rotated evidence" /><em>Awaiting operation</em></div><figcaption><strong>Rotate 90°</strong><small>Not captured</small></figcaption></figure>
+        </div>
+      </section>
+
+      <section class="concept-section" aria-labelledby="concept-title">
+        <div class="concept-intro">
+          <p class="section-kicker">Part 1 / Understanding digital images</p>
+          <h2 id="concept-title">What is inside an image?</h2>
+          <p>A digital image is an array. Its position identifies a pixel; its channel values describe color or intensity.</p>
+        </div>
+        <div class="concept-grid">
+          <article><span>2D</span><h3>Grayscale</h3><p>One intensity value per pixel, commonly from 0 (black) to 255 (white).</p></article>
+          <article><span>3D</span><h3>Color</h3><p>Height × width × channels. Color images combine multiple values at each coordinate.</p></article>
+          <article><span>BGR</span><h3>Channel order</h3><p>Python OpenCV uses blue, green, red ordering; browsers normally expose red, green, blue, alpha.</p></article>
+          <article><span>W×H</span><h3>Resolution</h3><p>The number of horizontal and vertical pixels determines how much spatial detail can be represented.</p></article>
+        </div>
+      </section>
+
+      <section class="report-section" id="reportSheet" aria-labelledby="report-title">
+        <header class="report-header">
+          <div><p>CSST106 · Laboratory Exercise No. 1</p><h2 id="report-title">Image Manipulation Report Sheet</h2></div>
+          <div class="report-fields">
+            <label>Name <input type="text" placeholder="Student name" /></label>
+            <label>Date <input type="date" /></label>
+          </div>
+        </header>
+
+        <div class="report-grid">
+          <div class="code-card">
+            <div class="code-card__head"><span>Equivalent Python / OpenCV</span><button id="copyCodeButton" type="button">Copy code</button></div>
+            <pre id="pythonCode"><code>import cv2
+
+# Load and inspect a color image (BGR order)
+img = cv2.imread("sample.jpg")
+print("Shape:", img.shape)  # height, width, channels
+
+# Convert BGR to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Inspect and change one pixel
+y, x = 40, 60
+print("BGR pixel:", img[y, x])
+img[y, x] = [145, 91, 230]  # B, G, R
+
+# Crop a region of interest
+crop = img[50:250, 80:380]
+
+# Resize and rotate clockwise
+resized = cv2.resize(img, (640, 480))
+rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+
+cv2.imshow("Original", img)
+cv2.imshow("Grayscale", gray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre>
+          </div>
+
+          <div class="reflection-card">
+            <label>Steps performed<textarea placeholder="Describe how you loaded, inspected, and manipulated the image."></textarea></label>
+            <label>What I learned<textarea placeholder="Explain image representation, pixel values, channels, and transformations."></textarea></label>
+            <label>Computer-vision application<textarea placeholder="Describe one real-life use of image processing."></textarea></label>
+          </div>
+        </div>
+
+        <footer class="report-footer">
+          <p><strong>Required evidence:</strong> original, grayscale, and manipulated images.</p>
+          <p>Generated with CVLAB.106 · Pink Pixel Studio</p>
+        </footer>
+      </section>
+    </main>
+
+    <footer class="lab-footer">
+      <div><strong>CVLAB.106 — PURRCEPTION.sheyn</strong><p>Computer Vision Lab Database</p></div>
+      <div><span>Lab 01</span><strong>Image Manipulation</strong></div>
+      <a href="../../index.html">Return to laboratory index →</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="lab01.js"></script>
+    <script
+      async
+      src="https://docs.opencv.org/5.x/opencv.js"
+      onload="onOpenCvScriptLoaded()"
+      onerror="onOpenCvScriptError()"
+    ></script>
+  </body>
+</html>
