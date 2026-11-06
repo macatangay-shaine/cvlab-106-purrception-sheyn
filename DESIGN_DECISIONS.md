@@ -58,6 +58,7 @@ Reference received: 2026-11-06
 - 2026-11-07: At the user's request, the Lab 01 export was revised to A4 portrait with explicit “Save as PDF” instructions, and the unwanted visible skip-workspace shortcut was removed from the lab page.
 - 2026-11-07: The user requested a strict two-page export. Print QA confirmed exactly two A4 portrait pages: evidence on page 1 and the code/report responses on page 2.
 - 2026-11-07: The user refined the print composition to a compact vertical evidence rail on the left and code plus written answers on the right. Print QA confirmed the complete report now fits on one A4 portrait page.
+- 2026-11-07: Print refinement requested: the black evidence rail now hugs the six image cards, the narrative footer is removed, the complete code is preserved, and the Q&A uses simple ruled essay areas instead of boxed containers. PDF text extraction confirmed the final Python line and all three response sections are present on one page.
 
 ## Lab 01 — Image Manipulation
 
@@ -91,5 +92,5 @@ Approved on 2026-11-07:
 - Workspace: Left operation toolbar, large center canvas, right pixel/properties inspector, and bottom result strip.
 - Interactions: Drag-and-drop/upload, clickable pixel inspection, draggable crop box, resize controls, grayscale, 90-degree rotation, undo, and reset.
 - Results: Printable contact sheet showing original, grayscale, pixel edit, crop, resize, and rotation, with dimensions and equivalent Python/OpenCV code.
-- Print format: One compact A4 portrait page, opened through a clearly labeled “Save as PDF” action. Six smaller evidence cards form a vertical rail on the left; the Python code and written responses occupy the right side.
+- Print format: One compact A4 portrait page, opened through a clearly labeled “Save as PDF” action. Six smaller evidence cards form a fitted vertical rail on the left; complete Python code and three minimal ruled essay areas occupy the right side.
 - Technical approach: OpenCV.js for live browser processing, with explicit explanations of the RGBA browser representation and Python OpenCV's BGR ordering.

@@ -285,9 +285,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   @page { size: A4 portrait; margin: 10mm; }
   body.lab-page { background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .lab-footer, .booth-heading, .toast { display: none !important; }
-  .print-sheet { display: grid; width: 190mm; height: 277mm; grid-template-columns: 62mm 1fr; gap: 4mm; overflow: hidden; break-inside: avoid; }
-  .booth-section { min-width: 0; min-height: 0; padding: 0; background: white; border: 0; }
-  .evidence-strip { height: 100%; grid-template-columns: 1fr; align-content: start; gap: 2mm; padding: 3mm; overflow: hidden; }
+  .print-sheet { display: grid; width: 190mm; grid-template-columns: 62mm 1fr; gap: 4mm; align-items: start; break-inside: avoid; }
+  .booth-section { min-width: 0; min-height: 0; padding: 0; align-self: start; background: white; border: 0; }
+  .evidence-strip { height: auto; grid-template-columns: 1fr; align-content: start; gap: 2mm; padding: 3mm; overflow: hidden; }
   .evidence-strip figure { display: grid; min-width: 0; padding: 2mm; grid-template-columns: 27mm 1fr; gap: 2mm; align-items: center; break-inside: avoid; }
   .evidence-strip figure::before, .evidence-strip figure::after { display: none; }
   .evidence-strip figure > div { width: 27mm; aspect-ratio: 4 / 3; }
@@ -296,7 +296,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .evidence-strip figcaption small { margin-top: 1mm; font-size: 5.5pt; overflow-wrap: anywhere; }
   .evidence-strip em { padding: 1mm; font-size: 6pt; text-align: center; }
   .shot-number { top: 2.5mm; left: 2.5mm; width: 5mm; height: 5mm; font-size: 5.5pt; }
-  .report-section { display: flex; min-width: 0; height: 277mm; margin: 0; overflow: hidden; flex-direction: column; box-shadow: none; break-inside: avoid; }
+  .report-section { display: flex; min-width: 0; height: auto; margin: 0; overflow: visible; flex-direction: column; border: 0; box-shadow: none; break-inside: avoid; }
   .report-header { display: block; flex: 0 0 auto; padding: 4mm; }
   .report-header p { margin-bottom: 1mm; font-size: 5.5pt; }
   .report-header h2 { font-size: 17pt; }
@@ -306,10 +306,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .code-card { min-width: 0; border-right: 0; border-bottom: 1px solid var(--lab-ink); }
   .code-card__head { padding: 2mm 3mm; }
   .code-card__head button { display: none; }
-  .code-card pre { height: 60mm; padding: 3mm; overflow: hidden; font-size: 5.4pt; line-height: 1.28; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .reflection-card { align-content: start; gap: 2.5mm; padding: 3mm; }
+  .code-card pre { height: auto; padding: 3mm; overflow: visible; font-size: 5pt; line-height: 1.22; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .reflection-card { align-content: start; gap: 2.5mm; padding: 4mm 0 0; }
   .reflection-card label { font-size: 8pt; }
-  .reflection-card textarea { min-height: 38mm; margin-top: 1mm; padding: 2mm; font-size: 7.5pt; line-height: 4.5mm; background-size: 100% 4.5mm; }
-  .report-footer { display: block; flex: 0 0 auto; padding: 2mm 3mm; font-size: 5pt; }
-  .report-footer p + p { margin-top: 1mm; }
+  .reflection-card textarea { min-height: 39mm; margin-top: 1mm; padding: 0; border: 0; border-radius: 0; resize: none; font-size: 7.5pt; line-height: 5mm; background-color: transparent; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(5mm - .25mm), #c9c2b8 calc(5mm - .25mm), #c9c2b8 5mm); background-size: 100% 5mm; }
 }
