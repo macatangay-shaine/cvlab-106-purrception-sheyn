@@ -57,6 +57,7 @@ Reference received: 2026-11-06
 - 2026-11-07: Lab 01 implemented and browser-tested. The OpenCV self-test passed image loading, pixel editing, grayscale conversion, resizing, 90-degree rotation, cropping, and the complete 6/6 evidence workflow. Awaiting user review before any Lab 02 work.
 - 2026-11-07: At the user's request, the Lab 01 export was revised to A4 portrait with explicit “Save as PDF” instructions, and the unwanted visible skip-workspace shortcut was removed from the lab page.
 - 2026-11-07: The user requested a strict two-page export. Print QA confirmed exactly two A4 portrait pages: evidence on page 1 and the code/report responses on page 2.
+- 2026-11-07: The user refined the print composition to a compact vertical evidence rail on the left and code plus written answers on the right. Print QA confirmed the complete report now fits on one A4 portrait page.
 
 ## Lab 01 — Image Manipulation
 
@@ -90,5 +91,5 @@ Approved on 2026-11-07:
 - Workspace: Left operation toolbar, large center canvas, right pixel/properties inspector, and bottom result strip.
 - Interactions: Drag-and-drop/upload, clickable pixel inspection, draggable crop box, resize controls, grayscale, 90-degree rotation, undo, and reset.
 - Results: Printable contact sheet showing original, grayscale, pixel edit, crop, resize, and rotation, with dimensions and equivalent Python/OpenCV code.
-- Print format: Exactly two A4 portrait pages, opened through a clearly labeled “Save as PDF” action with browser-dialog instructions. Page 1 contains the six evidence images; page 2 contains the Python code and written responses.
+- Print format: One compact A4 portrait page, opened through a clearly labeled “Save as PDF” action. Six smaller evidence cards form a vertical rail on the left; the Python code and written responses occupy the right side.
 - Technical approach: OpenCV.js for live browser processing, with explicit explanations of the RGBA browser representation and Python OpenCV's BGR ordering.

@@ -285,21 +285,31 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   @page { size: A4 portrait; margin: 10mm; }
   body.lab-page { background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .lab-footer, .booth-heading, .toast { display: none !important; }
-  .booth-section { min-height: 0; padding: 0; background: white; border: 0; break-after: page; }
-  .evidence-strip { grid-template-columns: repeat(2,1fr); gap: 4mm; padding: 5mm; overflow: visible; }
-  .evidence-strip figure { min-width: 0; break-inside: avoid; }
-  .report-section { display: flex; height: 277mm; margin: 0; overflow: hidden; flex-direction: column; box-shadow: none; break-before: page; break-inside: avoid; }
-  .report-header { flex: 0 0 auto; padding: 5mm; }
-  .report-header h2 { font-size: 20pt; }
-  .report-fields { gap: 3mm; }
-  .report-fields input { width: 37mm; padding: 1mm 0; }
-  .report-grid { display: grid; min-height: 0; flex: 1 1 auto; grid-template-columns: .92fr 1.08fr; }
-  .code-card { min-width: 0; border-right: 1px solid var(--lab-ink); border-bottom: 0; }
-  .code-card__head { padding: 2.5mm 4mm; }
+  .print-sheet { display: grid; width: 190mm; height: 277mm; grid-template-columns: 62mm 1fr; gap: 4mm; overflow: hidden; break-inside: avoid; }
+  .booth-section { min-width: 0; min-height: 0; padding: 0; background: white; border: 0; }
+  .evidence-strip { height: 100%; grid-template-columns: 1fr; align-content: start; gap: 2mm; padding: 3mm; overflow: hidden; }
+  .evidence-strip figure { display: grid; min-width: 0; padding: 2mm; grid-template-columns: 27mm 1fr; gap: 2mm; align-items: center; break-inside: avoid; }
+  .evidence-strip figure::before, .evidence-strip figure::after { display: none; }
+  .evidence-strip figure > div { width: 27mm; aspect-ratio: 4 / 3; }
+  .evidence-strip figcaption { min-width: 0; padding: 0; }
+  .evidence-strip figcaption strong { font-size: 8pt; line-height: 1; }
+  .evidence-strip figcaption small { margin-top: 1mm; font-size: 5.5pt; overflow-wrap: anywhere; }
+  .evidence-strip em { padding: 1mm; font-size: 6pt; text-align: center; }
+  .shot-number { top: 2.5mm; left: 2.5mm; width: 5mm; height: 5mm; font-size: 5.5pt; }
+  .report-section { display: flex; min-width: 0; height: 277mm; margin: 0; overflow: hidden; flex-direction: column; box-shadow: none; break-inside: avoid; }
+  .report-header { display: block; flex: 0 0 auto; padding: 4mm; }
+  .report-header p { margin-bottom: 1mm; font-size: 5.5pt; }
+  .report-header h2 { font-size: 17pt; }
+  .report-fields { display: grid; margin-top: 3mm; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .report-fields input { width: 100%; padding: 1mm 0; font-size: 7pt; }
+  .report-grid { display: block; min-height: 0; flex: 1 1 auto; }
+  .code-card { min-width: 0; border-right: 0; border-bottom: 1px solid var(--lab-ink); }
+  .code-card__head { padding: 2mm 3mm; }
   .code-card__head button { display: none; }
-  .code-card pre { height: calc(100% - 9mm); padding: 4mm; overflow: hidden; font-size: 5.2pt; line-height: 1.32; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .reflection-card { align-content: start; gap: 3mm; padding: 4mm; }
-  .reflection-card label { font-size: 9pt; }
-  .reflection-card textarea { min-height: 47mm; margin-top: 1.5mm; padding: 2mm; font-size: 8pt; line-height: 5mm; background-size: 100% 5mm; }
-  .report-footer { flex: 0 0 auto; padding: 2.5mm 5mm; }
+  .code-card pre { height: 60mm; padding: 3mm; overflow: hidden; font-size: 5.4pt; line-height: 1.28; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .reflection-card { align-content: start; gap: 2.5mm; padding: 3mm; }
+  .reflection-card label { font-size: 8pt; }
+  .reflection-card textarea { min-height: 38mm; margin-top: 1mm; padding: 2mm; font-size: 7.5pt; line-height: 4.5mm; background-size: 100% 4.5mm; }
+  .report-footer { display: block; flex: 0 0 auto; padding: 2mm 3mm; font-size: 5pt; }
+  .report-footer p + p { margin-top: 1mm; }
 }
