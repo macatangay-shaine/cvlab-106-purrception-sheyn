@@ -55,6 +55,7 @@ Reference received: 2026-11-06
 - 2026-11-07: Homepage masthead identity updated to “BSCS 4A: Macatangay, Shaine.”
 - 2026-11-07: User approved the academic portfolio hero copy: “From pixels to patterns, from experiments to understanding,” supported by a concise description of the compiled laboratory activities.
 - 2026-11-07: User requested floating pixel-art frog, bee, mushroom, and cat mascots for the homepage hero; implemented as lightweight inline SVGs using the approved palette.
+- 2026-11-07: Replaced the Menu panel’s three-line statement and handwritten note with frog and mushroom pixel icons at the user’s request.
 - 2026-11-07: Lab 01 instructor document analyzed. Required functionality recorded; visual theme, workspace layout, interactions, optional enhancements, and results presentation await user selection.
 - 2026-11-07: User approved all recommended Lab 01 choices and combined the Pink Pixel Studio editor with the retro photo-booth concept.
 - 2026-11-07: Lab 01 implemented and browser-tested. The OpenCV self-test passed image loading, pixel editing, grayscale conversion, resizing, 90-degree rotation, cropping, and the complete 6/6 evidence workflow. Awaiting user review before any Lab 02 work.

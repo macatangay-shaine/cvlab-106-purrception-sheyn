@@ -1062,23 +1062,35 @@ svg {
 
 .menu-dialog__aside {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   border-right: 0;
   background: var(--blue);
 }
 
-.menu-dialog__aside p {
-  font-family: var(--display);
-  font-size: 1.45rem;
-  font-weight: 600;
-  line-height: 1.05;
-  text-transform: uppercase;
+.menu-mascots {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 4rem);
 }
 
-.handwritten {
-  font-family: var(--hand);
-  font-size: 1.2rem;
+.menu-mascot {
+  image-rendering: pixelated;
+  filter: drop-shadow(0.6rem 0.7rem 0 rgba(23, 23, 22, 0.15));
+  animation: pixel-float 4s ease-in-out infinite;
+}
+
+.menu-mascot--frog {
+  width: min(100%, 12rem);
+}
+
+.menu-mascot--mushroom {
+  width: min(72%, 8.5rem);
+  animation-delay: -1.8s;
+  animation-duration: 4.6s;
 }
 
 .index-list {
