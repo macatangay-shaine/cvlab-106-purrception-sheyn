@@ -1,4 +1,4 @@
-# Instructor-provided laboratory documents stay local.
+# Instructor-provided laboratory briefs remain local.
 *.docx
 ~$*.docx
 

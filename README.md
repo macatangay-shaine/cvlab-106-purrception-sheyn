@@ -31,7 +31,9 @@ An interactive computer vision laboratory portfolio for CSST106. The project pre
 ```text
 .
 ├── .github/workflows/   # GitHub Pages automation
-├── docs/                # Project and design documentation
+├── docs/                # Project documentation
+│   ├── lab-instructions/ # Local source-brief registry for Labs 01–07
+│   └── DESIGN.md         # Design rationale and QA record
 ├── src/                 # Deployable website source
 │   ├── labs/
 │   │   ├── lab01/
@@ -60,7 +62,7 @@ Then open <http://localhost:8000>.
 
 ## Deployment
 
-Every push to `main` deploys `src/` through the [GitHub Pages workflow](.github/workflows/pages.yml). Instructor-provided documents and local QA artifacts are excluded from the public repository.
+Every push to `main` deploys `src/` through the [GitHub Pages workflow](.github/workflows/pages.yml). Instructor-provided briefs remain local under `docs/lab-instructions/`; the DOCX files and local QA artifacts are excluded from the public repository.
 
 ## Technology
 
