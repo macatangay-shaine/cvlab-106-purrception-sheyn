@@ -68,6 +68,7 @@ Reference received: 2026-11-06
 - 2026-11-07: Each completed lab page will end with an academic portfolio reflection that synthesizes the activity’s learning, evidence, and connection to later computer-vision topics. Lab 01 now includes this concluding learning reflection.
 - 2026-11-07: User approved all recommended Lab 02 choices: Yellow Bee-Line Edge Explorer, synchronized three-panel workspace, live Gaussian/Sobel/Canny controls, overlay and density enhancements, downloads, and a two-page A4 portrait report.
 - 2026-11-07: Lab 02 implemented and browser-tested. The OpenCV.js self-test passed Gaussian preprocessing, Sobel magnitude, and Canny detection; the provided seal processed successfully, visual QA passed, and print QA confirmed exactly two A4 portrait pages with complete evidence, code, comparison, and reflection. Awaiting user approval before Lab 03 planning.
+- 2026-11-07: Removed Lab 02’s duplicate lower PDF button. The single header action now renders all three evidence results directly to print canvases before opening the two-page PDF dialog, eliminating the image-loading race.
 
 ## Lab 02 — Edge Detection
 

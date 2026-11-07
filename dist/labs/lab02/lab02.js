@@ -78,7 +78,6 @@ const elements = {
   comparisonText: $("#comparisonText"),
   conclusionText: $("#conclusionText"),
   printButton: $("#printButton"),
-  reportPrintButton: $("#reportPrintButton"),
   printSettings: $("#printSettings"),
   printOriginal: $("#printOriginal"),
   printSobel: $("#printSobel"),
@@ -102,7 +101,8 @@ const state = {
   overlay: null,
   sourceName: "input.jpg",
   processingFrame: 0,
-  selfTestStarted: false
+  selfTestStarted: false,
+  printPrepared: false
 };
 
 let toastTimer = 0;
@@ -274,6 +274,7 @@ function processEdges() {
     cv.Canny(state.blurred, state.canny, settings.low, settings.high, 3, false);
     state.overlay = createOverlay(state.source, state.canny);
     renderResults(settings);
+    state.printPrepared = false;
     document.documentElement.dataset.processing = "ready";
   } catch (error) {
     document.documentElement.dataset.processing = "failed";
@@ -379,18 +380,12 @@ function downloadComparison() {
   downloadCanvas(output, "lab02-edge-comparison.png");
 }
 
-function matDataUrl(mat) {
-  const canvas = document.createElement("canvas");
-  cv.imshow(canvas, mat);
-  return canvas.toDataURL("image/png");
-}
-
 function syncPrintReport() {
   if (!state.gray || !state.sobel || !state.canny) return false;
   const settings = currentSettings();
-  elements.printOriginal.src = matDataUrl(state.gray);
-  elements.printSobel.src = matDataUrl(state.sobel);
-  elements.printCanny.src = matDataUrl(state.canny);
+  cv.imshow(elements.printOriginal, state.gray);
+  cv.imshow(elements.printSobel, state.sobel);
+  cv.imshow(elements.printCanny, state.canny);
   elements.printSettings.textContent = `Gaussian ${settings.blur} × ${settings.blur} · Sobel ${settings.mode} · Canny ${settings.low} / ${settings.high}`;
   elements.printOriginalMeta.textContent = `${state.gray.cols} × ${state.gray.rows}px · ${state.sourceName}`;
   elements.printSobelMeta.textContent = `${settings.mode} response · 3 × 3 derivative`;
@@ -398,15 +393,32 @@ function syncPrintReport() {
   elements.printComparison.textContent = elements.comparisonText.value.trim();
   elements.printConclusion.textContent = elements.conclusionText.value.trim();
   elements.printPythonCode.textContent = PYTHON_CODE;
+  state.printPrepared = true;
   return true;
 }
 
-function printReport() {
+function waitForPaint() {
+  return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+}
+
+async function printReport() {
   if (!syncPrintReport()) {
     showToast("Wait for the provided image to finish processing before saving the report.");
     return;
   }
-  window.print();
+  const originalLabel = elements.printButton.textContent;
+  elements.printButton.disabled = true;
+  elements.printButton.textContent = "Preparing report…";
+  try {
+    await waitForPaint();
+    window.print();
+  } catch (error) {
+    state.printPrepared = false;
+    showToast(error.message);
+  } finally {
+    elements.printButton.disabled = false;
+    elements.printButton.textContent = originalLabel;
+  }
 }
 
 async function copyPythonCode() {
@@ -508,12 +520,15 @@ elements.resetButton.addEventListener("click", resetDefaults);
 elements.copyCodeButton.addEventListener("click", copyPythonCode);
 elements.downloadResultsButton.addEventListener("click", downloadComparison);
 elements.printButton.addEventListener("click", printReport);
-elements.reportPrintButton.addEventListener("click", printReport);
+elements.comparisonText.addEventListener("input", () => { state.printPrepared = false; });
+elements.conclusionText.addEventListener("input", () => { state.printPrepared = false; });
 $$('[data-download]').forEach((button) => button.addEventListener("click", () => {
   const canvas = elements[`${button.dataset.download}Canvas`];
   if (canvas) downloadCanvas(canvas, `lab02-${button.dataset.download}.png`);
 }));
-window.addEventListener("beforeprint", syncPrintReport);
+window.addEventListener("beforeprint", () => {
+  if (!state.printPrepared) syncPrintReport();
+});
 window.addEventListener("beforeunload", () => {
   cancelAnimationFrame(state.processingFrame);
   ["source", "gray", "blurred", "sobel", "canny", "overlay"].forEach(deleteMat);

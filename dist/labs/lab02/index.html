@@ -28,7 +28,7 @@
       </a>
       <div class="lab-header__title"><span>Laboratory 02</span><strong>Edge Detection</strong></div>
       <div class="lab-header__student"><span>BSCS 4A</span><strong>Macatangay, Shaine</strong></div>
-      <button class="header-action" type="button" id="printButton">Save to PDF</button>
+      <button class="header-action" type="button" id="printButton">Save 2-page PDF</button>
     </header>
 
     <main>
@@ -187,8 +187,7 @@
           </label>
         </div>
         <div class="report-actions">
-          <p><strong>Print setting:</strong> A4 · Portrait · 2 pages · choose “Save to PDF” in the print dialog.</p>
-          <button class="primary-button" id="reportPrintButton" type="button">Save two-page report to PDF</button>
+          <p><strong>Print setting:</strong> Use the single “Save 2-page PDF” button in the page header, then choose “Save to PDF” in the print dialog. The report is formatted as A4 · Portrait · 2 pages.</p>
         </div>
       </section>
 
@@ -225,9 +224,9 @@
         <div class="print-title"><span>Page 1 · Visual evidence</span><h1>Sobel and Canny Edge Detection</h1></div>
         <div class="print-settings" id="printSettings">Gaussian 3 × 3 · Sobel magnitude · Canny 100 / 200</div>
         <div class="print-evidence-grid">
-          <figure><img id="printOriginal" alt="Original grayscale evidence" /><figcaption><strong>01 · Original grayscale</strong><span id="printOriginalMeta"></span></figcaption></figure>
-          <figure><img id="printSobel" alt="Sobel edge evidence" /><figcaption><strong>02 · Sobel edges</strong><span id="printSobelMeta"></span></figcaption></figure>
-          <figure><img id="printCanny" alt="Canny edge evidence" /><figcaption><strong>03 · Canny edges</strong><span id="printCannyMeta"></span></figcaption></figure>
+          <figure><canvas id="printOriginal" aria-label="Original grayscale evidence"></canvas><figcaption><strong>01 · Original grayscale</strong><span id="printOriginalMeta"></span></figcaption></figure>
+          <figure><canvas id="printSobel" aria-label="Sobel edge evidence"></canvas><figcaption><strong>02 · Sobel edges</strong><span id="printSobelMeta"></span></figcaption></figure>
+          <figure><canvas id="printCanny" aria-label="Canny edge evidence"></canvas><figcaption><strong>03 · Canny edges</strong><span id="printCannyMeta"></span></figcaption></figure>
         </div>
         <div class="print-answer"><h2>Comparison of edge maps</h2><p id="printComparison"></p></div>
       </section>
