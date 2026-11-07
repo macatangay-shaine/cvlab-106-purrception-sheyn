@@ -467,6 +467,10 @@ svg {
   color: var(--muted);
 }
 
+.section-intro h2 + .outline-link {
+  margin-top: 2rem;
+}
+
 .outline-link {
   display: inline-flex;
   align-items: center;
