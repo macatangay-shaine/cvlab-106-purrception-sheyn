@@ -51,7 +51,7 @@ Reference received: 2026-11-06
 
 - 2026-11-06: Interactive approval workflow established. Overall website direction is the current decision stage.
 - 2026-11-06: User approved the website name, subtitle, palette, typography, homepage structure, navigation direction, and illustration style. Shared homepage foundation authorized; Lab 01 remains pending separate planning and approval.
-- 2026-11-07: Shared homepage foundation implemented as a responsive static site in `dist/`. Structural checks, JavaScript syntax checks, local HTTP checks, and desktop browser visual QA passed. Awaiting user approval before Lab 01 requirement analysis and personalization planning.
+- 2026-11-07: Shared homepage foundation implemented as a responsive static site in `src/`. Structural checks, JavaScript syntax checks, local HTTP checks, and desktop browser visual QA passed. Awaiting user approval before Lab 01 requirement analysis and personalization planning.
 - 2026-11-07: Homepage masthead identity updated to “BSCS 4A: Macatangay, Shaine.”
 - 2026-11-07: User approved the academic portfolio hero copy: “From pixels to patterns, from experiments to understanding,” supported by a concise description of the compiled laboratory activities.
 - 2026-11-07: User requested floating pixel-art frog, bee, mushroom, and cat mascots for the homepage hero; implemented as lightweight inline SVGs using the approved palette.
@@ -68,6 +68,7 @@ Reference received: 2026-11-06
 - 2026-11-07: Each completed lab page will end with an academic portfolio reflection that synthesizes the activity’s learning, evidence, and connection to later computer-vision topics. Lab 01 now includes this concluding learning reflection.
 - 2026-11-07: User approved all recommended Lab 02 choices: Yellow Bee-Line Edge Explorer, synchronized three-panel workspace, live Gaussian/Sobel/Canny controls, overlay and density enhancements, downloads, and a two-page A4 portrait report.
 - 2026-11-07: Lab 02 implemented and browser-tested. The OpenCV.js self-test passed Gaussian preprocessing, Sobel magnitude, and Canny detection; the provided seal processed successfully, visual QA passed, and print QA confirmed exactly two A4 portrait pages with complete evidence, code, comparison, and reflection. Awaiting user approval before Lab 03 planning.
+- 2026-11-07: Lab 02 PDF controls refined at the user's request. The Save PDF button now sits below the documentation fields, and the print dimensions were corrected to prevent an extra blank page. Headless print QA confirmed exactly two A4 portrait pages.
 - 2026-11-07: Removed Lab 02’s duplicate lower PDF button. The single header action now renders all three evidence results directly to print canvases before opening the two-page PDF dialog, eliminating the image-loading race.
 
 ## Lab 02 — Edge Detection

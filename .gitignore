@@ -1,5 +1,6 @@
 # Instructor-provided laboratory documents stay local.
 *.docx
+~$*.docx
 
 # Local hosting identity and browser QA artifacts.
 .openai/
@@ -11,4 +12,5 @@ preview-*.png
 .DS_Store
 Thumbs.db
 __pycache__/
-
+.vscode/
+.idea/

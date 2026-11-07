@@ -78,8 +78,7 @@ input[type="range"] {
 
 .lab-brand,
 .lab-header__title,
-.lab-header__student,
-.header-action {
+.lab-header__student {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -129,21 +128,6 @@ input[type="range"] {
 .lab-header__student strong {
   font-size: 0.72rem;
   text-transform: uppercase;
-}
-
-.header-action {
-  border-right: 0;
-  background: var(--yellow);
-  font-size: 0.67rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.header-action:hover,
-.header-action:focus-visible {
-  background: var(--ink);
-  color: var(--paper);
 }
 
 .lab-hero {
@@ -826,6 +810,10 @@ input[type="range"] {
 }
 
 .report-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
   margin-top: 1.3rem;
   padding-top: 1.3rem;
   border-top: var(--border);
@@ -834,6 +822,23 @@ input[type="range"] {
 .report-actions p {
   margin: 0;
   font-size: 0.7rem;
+}
+
+.report-print-button {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.15rem;
+  border: var(--border);
+  background: var(--yellow);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.report-print-button:hover,
+.report-print-button:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .reflection-section {
@@ -1046,18 +1051,13 @@ input[type="range"] {
 }
 
 @media (max-width: 560px) {
-  .lab-brand,
-  .header-action {
+  .lab-brand {
     padding: 0.65rem 0.8rem;
   }
 
   .lab-brand__mark {
     width: 2.2rem;
     height: 2.2rem;
-  }
-
-  .header-action {
-    font-size: 0.55rem;
   }
 
   .lab-hero {
@@ -1074,6 +1074,11 @@ input[type="range"] {
 
   .control-rail {
     grid-template-columns: 1fr;
+  }
+
+  .report-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .comparison-area {
@@ -1120,7 +1125,7 @@ input[type="range"] {
 @media print {
   html,
   body {
-    width: 210mm;
+    width: auto;
     margin: 0;
     padding: 0;
     background: white;
@@ -1136,22 +1141,26 @@ input[type="range"] {
 
   .print-report {
     display: block;
+    width: 190mm;
+    margin: 0;
   }
 
   .print-page {
     position: relative;
     width: 190mm;
-    height: 277mm;
+    height: 276mm;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    page-break-after: always;
-    break-after: page;
-  }
-
-  .print-page:last-child {
     page-break-after: auto;
     break-after: auto;
+    page-break-inside: avoid;
+    break-inside: avoid-page;
+  }
+
+  .print-page + .print-page {
+    page-break-before: always;
+    break-before: page;
   }
 
   .print-head {
