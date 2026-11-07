@@ -12,7 +12,11 @@ An interactive computer vision laboratory portfolio for CSST106. The project pre
 | --- | --- | --- |
 | 01 — Image Manipulation | [Pink Pixel Studio](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab01/) | Complete |
 | 02 — Edge Detection | [Bee-Line Edge Explorer](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab02/) | Complete |
-| 03–07 | Planned activities | In progress |
+| 03 — Histogram Equalization | [Contrast Signal Workshop](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab03/) | Complete |
+| 04 — Feature Detection | [Keypoint Constellation Lab](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab04/) | Complete |
+| 05 — PCA & Eigenfaces | [Variance Portrait Room](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab05/) | Complete |
+| 06 — Object Detection | [YOLO11 Detection Deck](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab06/) | Complete |
+| 07 — Image Segmentation | [Pixel Territory Atlas](https://macatangay-shaine.github.io/cvlab-106-purrception-sheyn/labs/lab07/) | Complete |
 
 ## Highlights
 
@@ -31,7 +35,9 @@ An interactive computer vision laboratory portfolio for CSST106. The project pre
 ├── src/                 # Deployable website source
 │   ├── labs/
 │   │   ├── lab01/
-│   │   └── lab02/
+│   │   ├── lab02/
+│   │   ├── lab03/ … lab07/
+│   │   └── shared/
 │   ├── app.js
 │   ├── index.html
 │   └── styles.css

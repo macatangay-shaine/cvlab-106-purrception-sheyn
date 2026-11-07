@@ -14,7 +14,7 @@ Last updated: 2026-11-07
 
 ## Overall Website Design
 
-Status: Shared foundation implemented and tested; awaiting user approval
+Status: Complete seven-laboratory portfolio implemented and tested; awaiting final user review
 
 - Website name: `CVLAB.106 — PURRCEPTION.sheyn`
 - Subtitle: `Computer Vision Lab Database`
@@ -41,13 +41,13 @@ Reference received: 2026-11-06
 
 | Laboratory | Theme | Selected features | Rejected suggestions | Approved layout | Additional functionality | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| Lab 01 — Image Manipulation | Pink Pixel Studio + retro photo booth | OpenCV image exploration and manipulation, pixel inspector, print-ready evidence sheet | Unselected alternatives: simple playground, standalone before/after workspace | Editor toolbar + center canvas + right inspector + photo strip | Undo/reset, OpenCV/Python mapping, printable contact sheet | Implemented and tested; awaiting user approval |
-| Lab 02 — Edge Detection | Yellow Bee-Line Edge Explorer | Sobel/Canny comparison, provided input image, live blur and threshold controls | Webcam mode not selected | Control rail + synchronized Original/Sobel/Canny panels | Edge overlay, density reading, downloads, two-page A4 report | Implemented and tested; awaiting user approval |
-| Lab 03 — Histogram Equalization | Pending | Pending | None yet | Pending | Pending | Not started |
-| Lab 04 — Feature Detection | Pending | Pending | None yet | Pending | Pending | Not started |
-| Lab 05 — PCA & Eigenfaces | Pending | Pending | None yet | Pending | Pending | Not started |
-| Lab 06 — Object Detection | Pending | Pending | None yet | Pending | Pending | Not started |
-| Lab 07 — Image Segmentation | Pending | Pending | None yet | Pending | Pending | Not started |
+| Lab 01 — Image Manipulation | Pink Pixel Studio + retro photo booth | OpenCV image exploration and manipulation, pixel inspector, print-ready evidence sheet | Unselected alternatives: simple playground, standalone before/after workspace | Editor toolbar + center canvas + right inspector + photo strip | Undo/reset, OpenCV/Python mapping, printable contact sheet | Implemented and tested |
+| Lab 02 — Edge Detection | Yellow Bee-Line Edge Explorer | Sobel/Canny comparison, provided input image, live blur and threshold controls | Webcam mode not selected | Control rail + synchronized Original/Sobel/Canny panels | Edge overlay, density reading, downloads, two-page A4 report | Implemented and tested |
+| Lab 03 — Histogram Equalization | Orange Contrast Signal Workshop | Linear contrast, global equalization, adaptive tile equalization, histograms | None | Shared experiment deck | Uploads, live controls, horizontal evidence, complete report | Implemented and tested |
+| Lab 04 — Feature Detection | Green Keypoint Constellation Lab | Hessian-style browser keypoints, transformed-view matching, SURF/SIFT Python workflow | None | Shared experiment deck | Sensitivity controls, matches, evidence, complete report | Implemented and tested |
+| Lab 05 — PCA & Eigenfaces | Purple Variance Portrait Room | Components, eigenfaces, reconstruction, cumulative variance, PCA/SVM Python workflow | None | Shared experiment deck | Face variants, variance chart, evidence, complete report | Implemented and tested |
+| Lab 06 — Object Detection | Blue YOLO11 Detection Deck | Confidence filtering, normalized annotations, training and validation workflow | None | Shared experiment deck | Model-scale comparison, evidence, complete report | Implemented and tested |
+| Lab 07 — Image Segmentation | Teal Pixel Territory Atlas | Otsu thresholding, region grouping, edges, semantic-style labels | None | Shared experiment deck | Uploads, live masks, evidence, complete report | Implemented and tested |
 
 ## Approval Log
 
@@ -73,6 +73,8 @@ Reference received: 2026-11-06
 - 2026-11-07: Lab 02 PDF controls refined at the user's request. The Save PDF button now sits below the documentation fields, and the print dimensions were corrected to prevent an extra blank page. Headless print QA confirmed exactly two A4 portrait pages.
 - 2026-11-07: Laboratory reports now present Shaine’s completed answers by default so instructors see the submitted responses immediately. Labs 01 and 02 also provide visitor-only “Write your own” and “Restore Shaine’s answers” controls; this pattern will continue in Labs 03–07. Lab 01 print QA confirmed the completed responses still fit on one A4 portrait page.
 - 2026-11-07: Labs 01 and 02 were aligned to a shared four-part header with a visible Back to database action. Lab 01’s PDF guidance now explicitly lists its evidence, code, identity fields, and completed Q&A. A separate 3840 × 1080 horizontal PNG export combines all six labeled evidence images for wallpaper and presentation use; future lab headers will reuse the same navigation pattern.
+- 2026-11-07: At the user's direction, Labs 03–07 were implemented from the five instructor documents. A shared laboratory shell keeps navigation, answer ownership, evidence downloads, and PDF behavior consistent while each activity provides topic-specific controls, processing, analysis, Python code, and completed responses. Browser runtime QA confirmed all five processors populate their live metrics without errors.
+- 2026-11-07: Final print QA completed for the new activities: Labs 03, 04, 06, and 07 produce two-page A4 reports; the more extensive PCA/SVM Lab 05 produces three pages. No trailing blank pages were generated.
 - 2026-11-07: Removed Lab 02’s duplicate lower PDF button. The single header action now renders all three evidence results directly to print canvases before opening the two-page PDF dialog, eliminating the image-loading race.
 
 ## Lab 02 — Edge Detection
