@@ -59,6 +59,7 @@ Reference received: 2026-11-06
 - 2026-11-07: The user requested a strict two-page export. Print QA confirmed exactly two A4 portrait pages: evidence on page 1 and the code/report responses on page 2.
 - 2026-11-07: The user refined the print composition to a compact vertical evidence rail on the left and code plus written answers on the right. Print QA confirmed the complete report now fits on one A4 portrait page.
 - 2026-11-07: Print refinement requested: the black evidence rail now hugs the six image cards, the narrative footer is removed, the complete code is preserved, and the Q&A uses simple ruled essay areas instead of boxed containers. PDF text extraction confirmed the final Python line and all three response sections are present on one page.
+- 2026-11-07: Lab 01 display name revised to “Image Manipulation: Pixel Studio.” Activity heroes will use the lab topic plus a personalized activity title and explicitly summarize what students will learn.
 
 ## Lab 01 — Image Manipulation
 

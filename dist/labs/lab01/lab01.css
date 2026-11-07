@@ -80,8 +80,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   text-transform: uppercase;
 }
 .lab-number { position: absolute; right: 4%; top: 0; margin: 0; color: rgba(220,128,170,.22); font: 800 clamp(10rem,22vw,22rem)/.9 "Barlow Condensed"; }
-.lab-hero h1 { position: relative; max-width: 790px; margin: 0; font: 800 clamp(4.2rem,8vw,8.4rem)/.78 "Barlow Condensed", sans-serif; letter-spacing: -.045em; text-transform: uppercase; }
+.lab-hero h1 { position: relative; max-width: 790px; margin: 0; font: 800 clamp(4rem,7vw,7.4rem)/.78 "Barlow Condensed", sans-serif; letter-spacing: -.045em; text-transform: uppercase; }
 .lab-hero__lede { position: relative; max-width: 650px; margin: 36px 0 0; font-size: clamp(.98rem,1.5vw,1.18rem); line-height: 1.65; }
+.lab-hero__lede strong { display: block; margin-bottom: 8px; color: var(--lab-pink-deep); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
 .scribble { position: relative; display: flex; gap: 10px; align-items: start; margin-top: 28px; }
 .scribble span { font-size: 1.35rem; }
 .scribble p { margin: 0; font: 600 1.25rem/1.05 "Caveat", cursive; transform: rotate(-3deg); }
