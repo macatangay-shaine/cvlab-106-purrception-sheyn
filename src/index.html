@@ -331,22 +331,36 @@
       </section>
 
       <section class="notebook ruled-section" id="notebook" aria-labelledby="notebook-title">
-        <div class="note-card reveal" aria-hidden="true">
-          <p>□ required first</p>
-          <p>□ ideas discussed</p>
-          <p>□ function tested</p>
-          <p>□ activity approved</p>
+        <aside class="note-card reveal" aria-label="The seven-step computer vision journey">
+          <p class="note-card__label"><span>Vision journey</span><strong>01 → 07</strong></p>
+          <ol>
+            <li><span>01</span><div><strong>Pixels</strong><small>Manipulate the image</small></div><span aria-hidden="true">→</span></li>
+            <li><span>02</span><div><strong>Boundaries</strong><small>Detect meaningful edges</small></div><span aria-hidden="true">→</span></li>
+            <li><span>03</span><div><strong>Contrast</strong><small>Reveal hidden detail</small></div><span aria-hidden="true">→</span></li>
+            <li><span>04</span><div><strong>Features</strong><small>Match visual landmarks</small></div><span aria-hidden="true">→</span></li>
+            <li><span>05</span><div><strong>Faces</strong><small>Represent visual variation</small></div><span aria-hidden="true">→</span></li>
+            <li><span>06</span><div><strong>Objects</strong><small>Locate what the model sees</small></div><span aria-hidden="true">→</span></li>
+            <li><span>07</span><div><strong>Regions</strong><small>Understand every area</small></div><span aria-hidden="true">◎</span></li>
+          </ol>
           <span class="tape"></span>
-        </div>
+        </aside>
         <div class="notebook__symbol reveal" aria-hidden="true">＊</div>
         <div class="notebook__copy reveal">
-          <p class="section-kicker">The working agreement</p>
-          <h2 id="notebook-title">Not a finished portfolio.<br />A laboratory that grows with intention.</h2>
+          <p class="section-kicker">From pixel to perception</p>
+          <h2 id="notebook-title">A visual journey through how computers understand images.</h2>
           <p>
-            Every experiment begins with its required academic work, then earns its personality through discussion,
-            implementation, testing, and approval.
+            Follow an image as it moves from raw pixels and boundaries to features, faces, objects, and meaningful
+            regions. Each stop pairs Shaine’s completed analysis with an interactive experiment visitors can explore.
           </p>
-          <span class="decision-note">Design rationale documented in the project repository <span aria-hidden="true">✓</span></span>
+          <div class="notebook__metrics" aria-label="Computer vision journey summary">
+            <div><strong>07</strong><span>visual chapters</span></div>
+            <div><strong>07</strong><span>live experiments</span></div>
+            <div><strong>01</strong><span>connected journey</span></div>
+          </div>
+          <div class="notebook__actions">
+            <a class="decision-note" href="labs/lab01/">Begin at Lab 01 <span aria-hidden="true">→</span></a>
+            <a class="notebook__text-link" href="https://github.com/macatangay-shaine/cvlab-106-purrception-sheyn/blob/main/docs/DESIGN.md" target="_blank" rel="noopener noreferrer">Read the design &amp; QA notes <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </section>
     </main>
