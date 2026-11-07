@@ -1,6 +1,7 @@
 # Instructor-provided laboratory briefs remain local.
 *.docx
 ~$*.docx
+docs/lab-instructions/README.md
 
 # Local hosting identity and browser QA artifacts.
 .openai/
