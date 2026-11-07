@@ -154,9 +154,9 @@ movableObjects.forEach((object) => {
   object.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return;
     event.preventDefault();
+    object.classList.add("is-dragging");
     const objectBounds = object.getBoundingClientRect();
     anchorObject(object);
-    object.classList.add("is-dragging");
     object.dataset.dragOffsetX = String(event.clientX - objectBounds.left);
     object.dataset.dragOffsetY = String(event.clientY - objectBounds.top);
     object.setPointerCapture(event.pointerId);
