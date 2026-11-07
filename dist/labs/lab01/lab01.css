@@ -232,6 +232,23 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 .report-footer { display: flex; justify-content: space-between; gap: 20px; padding: 13px 29px; border-top: 1px solid var(--lab-ink); font-size: .58rem; text-transform: uppercase; }
 .report-footer p { margin: 0; }
 
+.activity-reflection { display: grid; grid-template-columns: minmax(300px,.72fr) minmax(480px,1.28fr); border-top: 1px solid var(--lab-ink); border-bottom: 1px solid var(--lab-ink); background: #fffaf4; }
+.activity-reflection__intro { position: relative; min-height: 650px; padding: clamp(48px,7vw,100px) clamp(28px,6vw,90px); overflow: hidden; background: var(--lab-pink); border-right: 1px solid var(--lab-ink); }
+.activity-reflection__intro .section-kicker { position: relative; z-index: 1; margin-bottom: 32px; padding: 0; background: transparent; }
+.reflection-mark { position: absolute; right: -2%; bottom: -12%; color: rgba(255,255,255,.28); font: 800 clamp(18rem,34vw,34rem)/.8 "Barlow Condensed", sans-serif; }
+.activity-reflection h2 { position: relative; z-index: 1; max-width: 560px; margin: 0; font: 800 clamp(3.5rem,6vw,6.5rem)/.82 "Barlow Condensed", sans-serif; letter-spacing: -.035em; text-transform: uppercase; }
+.activity-reflection__intro > p:last-child { position: relative; z-index: 1; max-width: 430px; margin: 32px 0 0; font-size: .82rem; line-height: 1.65; }
+.activity-reflection__body { align-self: center; padding: clamp(48px,7vw,100px) clamp(28px,7vw,105px); }
+.activity-reflection__body > p { max-width: 850px; font-size: .86rem; line-height: 1.8; }
+.activity-reflection__body .reflection-lead { margin-top: 0; font: 600 clamp(1.35rem,2.2vw,2rem)/1.35 "Inter", sans-serif; letter-spacing: -.02em; }
+.learning-summary { max-width: 900px; margin: 42px 0; border-bottom: 1px solid var(--lab-ink); }
+.learning-summary > div { display: grid; grid-template-columns: minmax(145px,.55fr) 1.45fr; gap: 28px; padding: 18px 0; border-top: 1px solid var(--lab-ink); }
+.learning-summary dt { font: 700 1rem "Barlow Condensed", sans-serif; text-transform: uppercase; }
+.learning-summary dt span { display: inline-block; min-width: 28px; color: var(--lab-pink-deep); }
+.learning-summary dd { margin: 0; font-size: .73rem; line-height: 1.6; }
+.reflection-conclusion { margin: 0; padding: 20px 0 20px 22px; border-left: 5px solid var(--lab-pink); }
+.reflection-conclusion strong { display: block; margin-bottom: 5px; font: 700 1rem "Barlow Condensed", sans-serif; text-transform: uppercase; }
+
 .lab-footer { display: grid; grid-template-columns: 1.5fr 1fr 1fr; min-height: 120px; border-top: 1px solid var(--lab-ink); background: var(--lab-ink); color: white; }
 .lab-footer > * { padding: 28px clamp(20px,4vw,55px); border-right: 1px solid #4f5551; }
 .lab-footer p { margin: 4px 0 0; color: #aeb5b1; font-size: .67rem; }
@@ -248,6 +265,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .inspector__head { grid-column: 1/-1; }
   .pixel-panel, .pixel-editor { border-right: 1px solid #4e5450; border-bottom: 0; }
   .concept-section { grid-template-columns: 1fr; }
+  .activity-reflection { grid-template-columns: 1fr; }
+  .activity-reflection__intro { min-height: 460px; border-right: 0; border-bottom: 1px solid var(--lab-ink); }
 }
 
 @media (max-width: 760px) {
@@ -278,6 +297,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .report-fields input { width: 100%; }
   .report-footer, .lab-footer { display: flex; flex-direction: column; }
   .lab-footer > * { border-right: 0; border-bottom: 1px solid #4f5551; }
+  .activity-reflection__intro { min-height: 410px; }
+  .activity-reflection h2 { font-size: clamp(3.2rem,15vw,5rem); }
+  .learning-summary > div { grid-template-columns: 1fr; gap: 7px; }
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
@@ -285,7 +307,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 @media print {
   @page { size: A4 portrait; margin: 10mm; }
   body.lab-page { background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .lab-footer, .booth-heading, .toast { display: none !important; }
+  .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .activity-reflection, .lab-footer, .booth-heading, .toast { display: none !important; }
   .print-sheet { display: grid; width: 190mm; grid-template-columns: 62mm 1fr; gap: 4mm; align-items: start; break-inside: avoid; }
   .booth-section { min-width: 0; min-height: 0; padding: 0; align-self: start; background: white; border: 0; }
   .evidence-strip { height: auto; grid-template-columns: 1fr; align-content: start; gap: 2mm; padding: 3mm; overflow: hidden; }

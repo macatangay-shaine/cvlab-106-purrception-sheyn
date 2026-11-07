@@ -61,6 +61,7 @@ Reference received: 2026-11-06
 - 2026-11-07: Print refinement requested: the black evidence rail now hugs the six image cards, the narrative footer is removed, the complete code is preserved, and the Q&A uses simple ruled essay areas instead of boxed containers. PDF text extraction confirmed the final Python line and all three response sections are present on one page.
 - 2026-11-07: Lab 01 display name revised to “Image Manipulation: Pixel Studio.” Activity heroes will use the lab topic plus a personalized activity title and explicitly summarize what students will learn.
 - 2026-11-07: Lab introductions will address the student directly and frame each experiment as part of the compiled activity portfolio.
+- 2026-11-07: Each completed lab page will end with an academic portfolio reflection that synthesizes the activity’s learning, evidence, and connection to later computer-vision topics. Lab 01 now includes this concluding learning reflection.
 
 ## Lab 01 — Image Manipulation
 
