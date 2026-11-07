@@ -1,6 +1,6 @@
 # Computer Vision Laboratory — Design Decisions
 
-Last updated: 2026-11-06
+Last updated: 2026-11-07
 
 ## Decision Rules
 
@@ -40,7 +40,7 @@ Reference received: 2026-11-06
 | Laboratory | Theme | Selected features | Rejected suggestions | Approved layout | Additional functionality | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | Lab 01 — Image Manipulation | Pink Pixel Studio + retro photo booth | OpenCV image exploration and manipulation, pixel inspector, print-ready evidence sheet | Unselected alternatives: simple playground, standalone before/after workspace | Editor toolbar + center canvas + right inspector + photo strip | Undo/reset, OpenCV/Python mapping, printable contact sheet | Implemented and tested; awaiting user approval |
-| Lab 02 — Edge Detection | Pending | Pending | None yet | Pending | Pending | Not started |
+| Lab 02 — Edge Detection | Yellow Bee-Line Edge Explorer | Sobel/Canny comparison, provided input image, live blur and threshold controls | Webcam mode not selected | Control rail + synchronized Original/Sobel/Canny panels | Edge overlay, density reading, downloads, two-page A4 report | Implemented and tested; awaiting user approval |
 | Lab 03 — Histogram Equalization | Pending | Pending | None yet | Pending | Pending | Not started |
 | Lab 04 — Feature Detection | Pending | Pending | None yet | Pending | Pending | Not started |
 | Lab 05 — PCA & Eigenfaces | Pending | Pending | None yet | Pending | Pending | Not started |
@@ -66,6 +66,40 @@ Reference received: 2026-11-06
 - 2026-11-07: Lab 01 display name revised to “Image Manipulation: Pixel Studio.” Activity heroes will use the lab topic plus a personalized activity title and explicitly summarize what students will learn.
 - 2026-11-07: Lab introductions will address the student directly and frame each experiment as part of the compiled activity portfolio.
 - 2026-11-07: Each completed lab page will end with an academic portfolio reflection that synthesizes the activity’s learning, evidence, and connection to later computer-vision topics. Lab 01 now includes this concluding learning reflection.
+- 2026-11-07: User approved all recommended Lab 02 choices: Yellow Bee-Line Edge Explorer, synchronized three-panel workspace, live Gaussian/Sobel/Canny controls, overlay and density enhancements, downloads, and a two-page A4 portrait report.
+- 2026-11-07: Lab 02 implemented and browser-tested. The OpenCV.js self-test passed Gaussian preprocessing, Sobel magnitude, and Canny detection; the provided seal processed successfully, visual QA passed, and print QA confirmed exactly two A4 portrait pages with complete evidence, code, comparison, and reflection. Awaiting user approval before Lab 03 planning.
+
+## Lab 02 — Edge Detection
+
+### Required Laboratory Features
+
+- Use Python and OpenCV to perform Sobel and Canny edge detection on the provided `input.jpg` image.
+- Load and display the image in grayscale.
+- Apply a 3 × 3 Gaussian blur before detecting edges.
+- Calculate Sobel gradients in the x and y directions and combine their magnitudes.
+- Apply Canny edge detection with low and high thresholds of 100 and 200.
+- Display the original grayscale image, Sobel result, and Canny result side by side.
+- Explain the differences between the two edge maps and provide an academic conclusion.
+
+### Suggested Creative Enhancements
+
+Approved:
+
+- Adjustable Gaussian blur and Canny low/high thresholds while preserving the instructor defaults.
+- Sobel X, Y, and combined-magnitude views.
+- Canny edge overlay and live edge-density reading.
+- Downloadable result panels and comparison image.
+- Two-page A4 portrait report with visual evidence, complete Python code, comparison, conclusion, and reflection.
+
+### My Personalization Choices
+
+Approved on 2026-11-07:
+
+- Visual concept: Yellow Bee-Line Edge Explorer with a pixel-bee guide and technical scanning graphics.
+- Workspace: Left control rail with synchronized Original, Sobel, and Canny result panels.
+- Interactions: Image upload/sample reset, Gaussian blur size, Sobel direction/magnitude, live Canny thresholds, edge overlay, and required-default reset.
+- Results: Downloadable PNG evidence plus a two-page A4 portrait report.
+- Technical approach: OpenCV.js for live browser processing, paired with the complete instructor-aligned Python/OpenCV implementation.
 
 ## Lab 01 — Image Manipulation
 

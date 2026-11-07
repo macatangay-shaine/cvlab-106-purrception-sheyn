@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lab 02 — Bee-Line Edge Explorer, an interactive Sobel and Canny edge-detection laboratory."
+    />
+    <meta name="theme-color" content="#f2bd2f" />
+    <title>Lab 02 — Bee-Line Edge Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="lab02.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#workspace">Skip to edge workspace</a>
+
+    <header class="lab-header">
+      <a class="lab-brand" href="../../index.html" aria-label="Return to CVLAB.106 homepage">
+        <span class="lab-brand__mark">CV</span>
+        <span><strong>CVLAB.106</strong><small>PURRCEPTION.sheyn</small></span>
+      </a>
+      <div class="lab-header__title"><span>Laboratory 02</span><strong>Edge Detection</strong></div>
+      <div class="lab-header__student"><span>BSCS 4A</span><strong>Macatangay, Shaine</strong></div>
+      <button class="header-action" type="button" id="printButton">Save to PDF</button>
+    </header>
+
+    <main>
+      <section class="lab-hero" aria-labelledby="lab-title">
+        <div class="lab-hero__copy">
+          <p class="activity-label">Yellow signal scanner · Activity portfolio</p>
+          <h1 id="lab-title">Edge Detection:<br /><em>Bee-Line Edge Explorer</em></h1>
+          <p class="lab-hero__intro">
+            In this activity, you will discover how image gradients reveal boundaries, compare the expressive
+            responses of Sobel with the thin binary contours of Canny, and learn how blur and thresholds influence
+            what a computer decides is an edge.
+          </p>
+          <ul class="learning-tags" aria-label="Learning outcomes">
+            <li>Preprocess noise</li>
+            <li>Measure gradients</li>
+            <li>Compare edge maps</li>
+          </ul>
+        </div>
+
+        <div class="lab-hero__art" aria-hidden="true">
+          <div class="scan-field"><i></i><i></i><i></i><i></i><i></i></div>
+          <svg class="hero-bee" viewBox="0 0 100 75" shape-rendering="crispEdges">
+            <rect class="ink" x="30" y="5" width="20" height="10" />
+            <rect class="ink" x="55" y="10" width="20" height="10" />
+            <rect class="blue" x="35" y="10" width="15" height="15" />
+            <rect class="blue" x="55" y="15" width="15" height="15" />
+            <rect class="ink" x="15" y="30" width="70" height="35" />
+            <rect class="ink" x="5" y="40" width="10" height="10" />
+            <rect class="yellow" x="25" y="35" width="15" height="25" />
+            <rect class="yellow" x="50" y="35" width="15" height="25" />
+            <rect class="yellow" x="70" y="40" width="10" height="15" />
+            <rect class="paper" x="20" y="35" width="5" height="5" />
+          </svg>
+          <p>follow the contour<br />find the signal</p>
+        </div>
+      </section>
+
+      <section class="workspace-section" id="workspace" aria-labelledby="workspace-title">
+        <header class="section-heading">
+          <div><span>Interactive experiment</span><h2 id="workspace-title">Tune the detector.</h2></div>
+          <p>Use the instructor defaults first, then adjust one variable at a time and observe how the maps change.</p>
+        </header>
+
+        <div class="edge-workspace">
+          <aside class="control-rail" aria-label="Edge detection controls">
+            <div class="engine-status" id="engineStatus" role="status" aria-live="polite">
+              <span></span><strong>Loading OpenCV.js</strong>
+            </div>
+
+            <div class="control-group">
+              <p class="control-label"><span>01</span> Image source</p>
+              <label class="upload-button" for="fileInput">Upload image</label>
+              <input id="fileInput" type="file" accept="image/*" />
+              <button class="text-button" id="sampleButton" type="button">Use provided input.jpg</button>
+              <p class="control-help" id="sourceMeta">Waiting for the processing engine.</p>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="blurSize"><span>02</span> Gaussian blur</label>
+              <select id="blurSize">
+                <option value="3" selected>3 × 3 — instructor default</option>
+                <option value="5">5 × 5 — smoother</option>
+                <option value="7">7 × 7 — strongest</option>
+              </select>
+            </div>
+
+            <fieldset class="control-group">
+              <legend class="control-label"><span>03</span> Sobel response</legend>
+              <div class="segmented-control">
+                <label><input type="radio" name="sobelMode" value="x" /><span>X</span></label>
+                <label><input type="radio" name="sobelMode" value="y" /><span>Y</span></label>
+                <label><input type="radio" name="sobelMode" value="magnitude" checked /><span>Magnitude</span></label>
+              </div>
+            </fieldset>
+
+            <div class="control-group range-group">
+              <label class="control-label" for="lowThreshold"><span>04</span> Canny thresholds</label>
+              <div class="range-head"><span>Low</span><output id="lowValue" for="lowThreshold">100</output></div>
+              <input id="lowThreshold" type="range" min="0" max="254" value="100" />
+              <div class="range-head"><span>High</span><output id="highValue" for="highThreshold">200</output></div>
+              <input id="highThreshold" type="range" min="1" max="255" value="200" />
+            </div>
+
+            <label class="toggle-control">
+              <input id="overlayToggle" type="checkbox" />
+              <span aria-hidden="true"></span>
+              Show Canny overlay
+            </label>
+
+            <button class="primary-button" id="resetButton" type="button">Reset required defaults</button>
+          </aside>
+
+          <div class="comparison-area">
+            <div class="comparison-grid">
+              <article class="result-card result-card--original">
+                <header><span>01</span><div><p>Input</p><h3 id="originalTitle">Original grayscale</h3></div></header>
+                <div class="canvas-frame"><canvas id="originalCanvas" aria-label="Original grayscale image"></canvas></div>
+                <footer><span id="originalMeta">Awaiting image</span><button type="button" data-download="original">PNG ↓</button></footer>
+              </article>
+
+              <article class="result-card result-card--sobel">
+                <header><span>02</span><div><p>Gradient method</p><h3>Sobel <span id="sobelModeLabel">magnitude</span></h3></div></header>
+                <div class="canvas-frame"><canvas id="sobelCanvas" aria-label="Sobel edge detection result"></canvas></div>
+                <footer><span id="sobelMeta">3 × 3 derivative</span><button type="button" data-download="sobel">PNG ↓</button></footer>
+              </article>
+
+              <article class="result-card result-card--canny">
+                <header><span>03</span><div><p>Binary method</p><h3>Canny edges</h3></div></header>
+                <div class="canvas-frame"><canvas id="cannyCanvas" aria-label="Canny edge detection result"></canvas></div>
+                <footer><span id="cannyMeta">Thresholds 100 / 200</span><button type="button" data-download="canny">PNG ↓</button></footer>
+              </article>
+            </div>
+
+            <div class="live-reading" aria-live="polite">
+              <div><span class="reading-label">Live reading</span><strong id="edgeDensity">0.00% edge pixels</strong></div>
+              <p id="methodExplanation">
+                Sobel preserves gradient strength, while Canny uses suppression and two thresholds to produce thinner,
+                cleaner contours.
+              </p>
+              <button class="outline-button" id="downloadResultsButton" type="button">Download comparison image</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-section" aria-labelledby="method-title">
+        <div class="method-copy">
+          <p class="section-kicker">Required method</p>
+          <h2 id="method-title">From intensity to contour.</h2>
+          <ol>
+            <li><span>01</span><div><strong>Convert to grayscale</strong><p>Reduce the image to one intensity channel.</p></div></li>
+            <li><span>02</span><div><strong>Suppress noise</strong><p>Apply a Gaussian blur before measuring local change.</p></div></li>
+            <li><span>03</span><div><strong>Measure gradients</strong><p>Sobel estimates horizontal and vertical intensity derivatives.</p></div></li>
+            <li><span>04</span><div><strong>Trace reliable edges</strong><p>Canny thins responses and links strong and weak boundary evidence.</p></div></li>
+          </ol>
+        </div>
+        <div class="code-panel">
+          <header><span>Python / OpenCV</span><button id="copyCodeButton" type="button">Copy code</button></header>
+          <pre><code id="pythonCode"></code></pre>
+        </div>
+      </section>
+
+      <section class="report-section" aria-labelledby="report-title">
+        <header class="section-heading">
+          <div><span>Academic documentation</span><h2 id="report-title">Explain what the edges reveal.</h2></div>
+          <p>Your responses are included in the two-page A4 portrait report.</p>
+        </header>
+        <div class="report-fields">
+          <label>
+            <span>Sobel versus Canny comparison</span>
+            <textarea id="comparisonText" rows="7">The Sobel result represents the strength of intensity gradients, so edges appear in varying shades and may look thicker or include texture responses. Canny produces a binary edge map after non-maximum suppression and double-threshold hysteresis, making its contours thinner, cleaner, and more selective. Sobel is useful for studying gradient direction and magnitude, while Canny is useful when a clear boundary map is needed.</textarea>
+          </label>
+          <label>
+            <span>Conclusion and learning reflection</span>
+            <textarea id="conclusionText" rows="7">This activity showed that edge detection depends on both preprocessing and parameter selection. Gaussian blur reduced small noise before gradients were calculated. Sobel revealed how intensity changes vary across the image, while Canny converted reliable changes into connected binary contours. Adjusting the thresholds demonstrated that low values preserve more weak edges but may include noise, while high values produce fewer and stronger boundaries. These concepts support later work in feature extraction, segmentation, and object detection.</textarea>
+          </label>
+        </div>
+        <div class="report-actions">
+          <p><strong>Print setting:</strong> A4 · Portrait · 2 pages · choose “Save to PDF” in the print dialog.</p>
+          <button class="primary-button" id="reportPrintButton" type="button">Save two-page report to PDF</button>
+        </div>
+      </section>
+
+      <section class="reflection-section" aria-labelledby="reflection-title">
+        <p class="section-kicker">Activity reflection</p>
+        <h2 id="reflection-title">Learning to see the boundary, not only the object.</h2>
+        <div class="reflection-grid">
+          <p>
+            Edge detection transforms an image into evidence about change. By comparing Sobel and Canny, this activity
+            connects mathematical gradients with an observable visual result: intensity variation becomes structure.
+          </p>
+          <dl>
+            <div><dt>Preprocessing</dt><dd>Noise reduction stabilizes later measurements.</dd></div>
+            <div><dt>Gradients</dt><dd>Direction and magnitude describe local intensity change.</dd></div>
+            <div><dt>Thresholds</dt><dd>Parameter choices determine which boundaries survive.</dd></div>
+            <div><dt>Application</dt><dd>Edges support segmentation, features, and object analysis.</dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer class="lab-footer">
+      <div><strong>CVLAB.106 — PURRCEPTION.sheyn</strong><p>Computer Vision Lab Database</p></div>
+      <div><span>Lab 02</span><strong>Edge Detection</strong></div>
+      <a href="../../index.html">Return to laboratory index →</a>
+    </footer>
+
+    <div class="print-report" id="printReport" aria-hidden="true">
+      <section class="print-page print-page--evidence">
+        <header class="print-head">
+          <div><strong>CVLAB.106 · LAB 02</strong><span>Edge Detection: Bee-Line Edge Explorer</span></div>
+          <div><strong>BSCS 4A</strong><span>Macatangay, Shaine</span></div>
+        </header>
+        <div class="print-title"><span>Page 1 · Visual evidence</span><h1>Sobel and Canny Edge Detection</h1></div>
+        <div class="print-settings" id="printSettings">Gaussian 3 × 3 · Sobel magnitude · Canny 100 / 200</div>
+        <div class="print-evidence-grid">
+          <figure><img id="printOriginal" alt="Original grayscale evidence" /><figcaption><strong>01 · Original grayscale</strong><span id="printOriginalMeta"></span></figcaption></figure>
+          <figure><img id="printSobel" alt="Sobel edge evidence" /><figcaption><strong>02 · Sobel edges</strong><span id="printSobelMeta"></span></figcaption></figure>
+          <figure><img id="printCanny" alt="Canny edge evidence" /><figcaption><strong>03 · Canny edges</strong><span id="printCannyMeta"></span></figcaption></figure>
+        </div>
+        <div class="print-answer"><h2>Comparison of edge maps</h2><p id="printComparison"></p></div>
+      </section>
+
+      <section class="print-page print-page--code">
+        <header class="print-head">
+          <div><strong>CVLAB.106 · LAB 02</strong><span>Required Python implementation</span></div>
+          <div><strong>PAGE 2</strong><span>Code and reflection</span></div>
+        </header>
+        <div class="print-code"><h2>Python / OpenCV code</h2><pre id="printPythonCode"></pre></div>
+        <div class="print-answer print-answer--reflection"><h2>Conclusion and learning reflection</h2><p id="printConclusion"></p></div>
+        <footer class="print-foot">Generated with CVLAB.106 · Bee-Line Edge Explorer · Required evidence: original, Sobel, and Canny images.</footer>
+      </section>
+    </div>
+
+    <canvas id="sourceCanvas" hidden></canvas>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="lab02.js"></script>
+    <script
+      async
+      src="https://docs.opencv.org/5.x/opencv.js"
+      onload="onOpenCvScriptLoaded()"
+      onerror="onOpenCvScriptError()"
+    ></script>
+  </body>
+</html>
