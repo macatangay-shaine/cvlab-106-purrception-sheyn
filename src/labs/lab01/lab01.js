@@ -45,6 +45,7 @@ const elements = {
   progressCount: $("#progressCount"),
   progressBar: $("#progressBar"),
   printButton: $("#printButton"),
+  downloadStripButton: $("#downloadStripButton"),
   visitorAnswerButton: $("#visitorAnswerButton"),
   restoreAnswersButton: $("#restoreAnswersButton"),
   copyCodeButton: $("#copyCodeButton"),
@@ -120,6 +121,7 @@ function refreshControls() {
   elements.applyCropButton.disabled = !hasImage || !state.crop || state.crop.w < 2 || state.crop.h < 2;
   elements.pixelEditor.disabled = !hasImage;
   elements.applyPixelButton.disabled = !hasImage || !state.selectedPixel;
+  elements.downloadStripButton.disabled = state.evidence.size < 6;
 }
 
 function renderHistory() {
@@ -270,6 +272,92 @@ function captureEvidence(kind, detail) {
   state.evidence.add(kind);
   elements.progressCount.textContent = state.evidence.size;
   elements.progressBar.style.width = `${(state.evidence.size / 6) * 100}%`;
+  refreshControls();
+}
+
+function drawImageContained(context, image, x, y, width, height) {
+  const scale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+  context.drawImage(image, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
+}
+
+async function downloadHorizontalEvidenceStrip() {
+  const cards = $$('[data-evidence-card]');
+  const images = cards.map((card) => $("img", card));
+  if (state.evidence.size < 6 || images.some((image) => !image.src || !image.complete)) {
+    showToast("Complete all six evidence shots before downloading the horizontal image set.");
+    return;
+  }
+
+  try {
+    await Promise.all(images.map((image) => image.decode()));
+  } catch {
+    showToast("The evidence images are still loading. Please try the download again.");
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 3840;
+  canvas.height = 1080;
+  const context = canvas.getContext("2d");
+  const pagePadding = 64;
+  const gap = 20;
+  const cardWidth = (canvas.width - (pagePadding * 2) - (gap * 5)) / 6;
+  const cardTop = 176;
+  const cardHeight = 824;
+
+  context.fillStyle = "#171918";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "#dc80aa";
+  context.fillRect(0, 0, canvas.width, 24);
+  context.fillStyle = "#fffaf5";
+  context.font = '800 64px "Arial Narrow", Arial, sans-serif';
+  context.fillText("LAB 01 · IMAGE MANIPULATION", pagePadding, 98);
+  context.fillStyle = "#dc80aa";
+  context.font = '700 27px Arial, sans-serif';
+  context.fillText("PURRCEPTION.sheyn · Six transformations from pixels to evidence", pagePadding, 140);
+
+  cards.forEach((card, index) => {
+    const x = pagePadding + index * (cardWidth + gap);
+    const image = images[index];
+    const title = $("strong", card).textContent;
+    const detail = $("small", card).textContent;
+
+    context.fillStyle = "#f3efe8";
+    context.fillRect(x, cardTop, cardWidth, cardHeight);
+    context.fillStyle = index % 2 === 0 ? "#dc80aa" : "#f0bd3f";
+    context.fillRect(x, cardTop, cardWidth, 16);
+    context.fillStyle = "#292e2b";
+    context.fillRect(x + 24, cardTop + 48, cardWidth - 48, 610);
+    drawImageContained(context, image, x + 24, cardTop + 48, cardWidth - 48, 610);
+
+    context.fillStyle = "#b6386f";
+    context.font = '800 28px Arial, sans-serif';
+    context.fillText(String(index + 1).padStart(2, "0"), x + 26, cardTop + 710);
+    context.fillStyle = "#171918";
+    context.font = '800 34px "Arial Narrow", Arial, sans-serif';
+    context.fillText(title.toUpperCase(), x + 26, cardTop + 758, cardWidth - 52);
+    context.fillStyle = "#68635c";
+    context.font = '500 21px Arial, sans-serif';
+    context.fillText(detail, x + 26, cardTop + 800, cardWidth - 52);
+  });
+
+  canvas.toBlob((blob) => {
+    if (!blob) {
+      showToast("The horizontal image set could not be created. Please try again.");
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "lab01-horizontal-evidence-3840x1080.png";
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 0);
+    showToast("Horizontal 3840 × 1080 evidence image downloaded.");
+  }, "image/png");
 }
 
 function setMode(mode) {
@@ -647,6 +735,7 @@ elements.dropSurface.addEventListener("drop", (event) => {
 });
 
 elements.printButton.addEventListener("click", () => window.print());
+elements.downloadStripButton.addEventListener("click", downloadHorizontalEvidenceStrip);
 elements.visitorAnswerButton.addEventListener("click", startVisitorAnswers);
 elements.restoreAnswersButton.addEventListener("click", restoreOwnerAnswers);
 elements.copyCodeButton.addEventListener("click", async () => {

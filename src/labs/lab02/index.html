@@ -23,11 +23,16 @@
 
     <header class="lab-header">
       <a class="lab-brand" href="../../index.html" aria-label="Return to CVLAB.106 homepage">
-        <span class="lab-brand__mark">CV</span>
+        <svg viewBox="0 0 46 36" aria-hidden="true"><path d="M4 7h17v5H9v17H4V7Z" /><path d="M18 16h6l5 8L40 5h6L29 33 18 16Z" /></svg>
         <span><strong>CVLAB.106</strong><small>PURRCEPTION.sheyn</small></span>
       </a>
       <div class="lab-header__title"><span>Laboratory 02</span><strong>Edge Detection</strong></div>
-      <div class="lab-header__student"><span>BSCS 4A</span><strong>Macatangay, Shaine</strong></div>
+      <div class="lab-header__engine">
+        <div class="engine-status" id="engineStatus" role="status" aria-live="polite">
+          <span aria-hidden="true"></span><strong>Loading OpenCV.js</strong>
+        </div>
+      </div>
+      <a class="lab-header__back" href="../../index.html"><span>Back to database</span><b aria-hidden="true">↖</b></a>
     </header>
 
     <main>
@@ -73,10 +78,6 @@
 
         <div class="edge-workspace">
           <aside class="control-rail" aria-label="Edge detection controls">
-            <div class="engine-status" id="engineStatus" role="status" aria-live="polite">
-              <span></span><strong>Loading OpenCV.js</strong>
-            </div>
-
             <div class="control-group">
               <p class="control-label"><span>01</span> Image source</p>
               <label class="upload-button" for="fileInput">Upload image</label>
