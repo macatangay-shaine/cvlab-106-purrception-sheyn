@@ -240,8 +240,8 @@
         <header class="report-header">
           <div><p>CSST106 · Laboratory Exercise No. 1</p><h2 id="report-title">Image Manipulation Report Sheet</h2></div>
           <div class="report-fields">
-            <label>Name <input type="text" placeholder="Student name" /></label>
-            <label>Date <input type="date" /></label>
+            <label>Name <input type="text" value="Macatangay, Shaine" data-owner-field /></label>
+            <label>Date <input type="date" value="2026-11-07" data-owner-field /></label>
           </div>
         </header>
 
@@ -276,9 +276,17 @@ cv2.destroyAllWindows()</code></pre>
           </div>
 
           <div class="reflection-card">
-            <label>Steps performed<textarea placeholder="Describe how you loaded, inspected, and manipulated the image."></textarea></label>
-            <label>What I learned<textarea placeholder="Explain image representation, pixel values, channels, and transformations."></textarea></label>
-            <label>Computer-vision application<textarea placeholder="Describe one real-life use of image processing."></textarea></label>
+            <label>Steps performed<textarea data-owner-field>I loaded the image and inspected its shape, resolution, and color channels. I converted it to grayscale, examined and changed a pixel value, selected a region of interest for cropping, resized the image, and rotated it 90° clockwise. I recorded each result in the evidence strip to compare the original image with every transformation.</textarea></label>
+            <label>What I learned<textarea data-owner-field>I learned that a digital image is an array of pixel values. A grayscale image stores one intensity value per pixel, while a color image uses multiple channels. OpenCV reads color as BGR, unlike the browser’s RGBA order. Cropping, resizing, and rotation also showed how changing array data changes an image’s content, dimensions, and orientation.</textarea></label>
+            <label>Computer-vision application<textarea data-owner-field>One real-life application is medical image analysis. Image processing can enhance an X-ray or scan, isolate a region of interest, and standardize its size before a computer-vision model detects possible abnormalities. These basic operations help make visual evidence clearer and more consistent for analysis.</textarea></label>
+          </div>
+        </div>
+
+        <div class="answer-toolbar">
+          <p><strong>Shaine’s completed answers are shown by default.</strong> Visitors can try the activity without changing the submitted version.</p>
+          <div>
+            <button type="button" id="visitorAnswerButton">Write your own</button>
+            <button type="button" id="restoreAnswersButton">Restore Shaine’s answers</button>
           </div>
         </div>
 

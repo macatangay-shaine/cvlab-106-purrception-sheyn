@@ -820,8 +820,32 @@ input[type="range"] {
 }
 
 .report-actions p {
+  max-width: 35rem;
   margin: 0;
   font-size: 0.7rem;
+}
+
+.report-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+.answer-button {
+  padding: 0.9rem 1rem;
+  border: var(--border);
+  background: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.answer-button:hover,
+.answer-button:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .report-print-button {
@@ -1079,6 +1103,10 @@ input[type="range"] {
   .report-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .report-action-buttons {
+    display: grid;
   }
 
   .comparison-area {

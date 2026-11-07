@@ -229,6 +229,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 .reflection-card { display: grid; gap: 17px; padding: 25px; }
 .reflection-card label { font: 700 1rem "Barlow Condensed"; text-transform: uppercase; }
 .reflection-card textarea { display: block; width: 100%; min-height: 93px; margin-top: 7px; padding: 12px; border: 1px solid #9d978e; resize: vertical; background-color: #fffdf8; background-image: linear-gradient(transparent 25px,#ded9d0 26px); background-size: 100% 26px; line-height: 26px; }
+.answer-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 25px; border-top: 1px solid var(--lab-ink); background: #f7eee8; }
+.answer-toolbar p { max-width: 650px; margin: 0; font-size: .68rem; line-height: 1.55; }
+.answer-toolbar > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.answer-toolbar button { padding: 8px 11px; border: 1px solid var(--lab-ink); background: white; font-size: .6rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.answer-toolbar button:last-child { background: var(--lab-pink); }
+.answer-toolbar button:hover, .answer-toolbar button:focus-visible { background: var(--lab-ink); color: white; }
 .report-footer { display: flex; justify-content: space-between; gap: 20px; padding: 13px 29px; border-top: 1px solid var(--lab-ink); font-size: .58rem; text-transform: uppercase; }
 .report-footer p { margin: 0; }
 
@@ -295,6 +301,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
   .code-card { border-right: 0; border-bottom: 1px solid var(--lab-ink); }
   .report-fields { flex-direction: column; width: 100%; }
   .report-fields input { width: 100%; }
+  .answer-toolbar { align-items: stretch; flex-direction: column; }
   .report-footer, .lab-footer { display: flex; flex-direction: column; }
   .lab-footer > * { border-right: 0; border-bottom: 1px solid #4f5551; }
   .activity-reflection__intro { min-height: 410px; }
@@ -307,7 +314,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visib
 @media print {
   @page { size: A4 portrait; margin: 10mm; }
   body.lab-page { background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .activity-reflection, .lab-footer, .booth-heading, .toast { display: none !important; }
+  .lab-masthead, .lab-hero, .learning-ribbon, .studio-section, .concept-section, .activity-reflection, .lab-footer, .booth-heading, .answer-toolbar, .toast { display: none !important; }
   .print-sheet { display: grid; width: 190mm; grid-template-columns: 62mm 1fr; gap: 4mm; align-items: start; break-inside: avoid; }
   .booth-section { min-width: 0; min-height: 0; padding: 0; align-self: start; background: white; border: 0; }
   .evidence-strip { height: auto; grid-template-columns: 1fr; align-content: start; gap: 2mm; padding: 3mm; overflow: hidden; }

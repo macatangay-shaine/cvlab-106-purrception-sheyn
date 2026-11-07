@@ -45,6 +45,8 @@ const elements = {
   progressCount: $("#progressCount"),
   progressBar: $("#progressBar"),
   printButton: $("#printButton"),
+  visitorAnswerButton: $("#visitorAnswerButton"),
+  restoreAnswersButton: $("#restoreAnswersButton"),
   copyCodeButton: $("#copyCodeButton"),
   pythonCode: $("#pythonCode"),
   toast: $("#toast")
@@ -75,6 +77,17 @@ function showToast(message) {
   elements.toast.classList.add("is-visible");
   clearTimeout(toastTimer);
   toastTimer = window.setTimeout(() => elements.toast.classList.remove("is-visible"), 2600);
+}
+
+function startVisitorAnswers() {
+  $$('[data-owner-field]').forEach((field) => { field.value = ""; });
+  $('[data-owner-field]')?.focus();
+  showToast("Answer fields cleared. You can now write your own responses.");
+}
+
+function restoreOwnerAnswers() {
+  $$('[data-owner-field]').forEach((field) => { field.value = field.defaultValue; });
+  showToast("Shaine’s completed answers were restored.");
 }
 
 function clamp(value, min, max) {
@@ -634,6 +647,8 @@ elements.dropSurface.addEventListener("drop", (event) => {
 });
 
 elements.printButton.addEventListener("click", () => window.print());
+elements.visitorAnswerButton.addEventListener("click", startVisitorAnswers);
+elements.restoreAnswersButton.addEventListener("click", restoreOwnerAnswers);
 elements.copyCodeButton.addEventListener("click", async () => {
   const text = elements.pythonCode.innerText;
   try {

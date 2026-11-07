@@ -77,6 +77,8 @@ const elements = {
   copyCodeButton: $("#copyCodeButton"),
   comparisonText: $("#comparisonText"),
   conclusionText: $("#conclusionText"),
+  visitorAnswerButton: $("#visitorAnswerButton"),
+  restoreAnswersButton: $("#restoreAnswersButton"),
   printButton: $("#printButton"),
   printSettings: $("#printSettings"),
   printOriginal: $("#printOriginal"),
@@ -112,6 +114,19 @@ function showToast(message) {
   elements.toast.classList.add("is-visible");
   clearTimeout(toastTimer);
   toastTimer = window.setTimeout(() => elements.toast.classList.remove("is-visible"), 2600);
+}
+
+function startVisitorAnswers() {
+  [elements.comparisonText, elements.conclusionText].forEach((field) => { field.value = ""; });
+  state.printPrepared = false;
+  elements.comparisonText.focus();
+  showToast("Answer fields cleared. You can now write your own responses.");
+}
+
+function restoreOwnerAnswers() {
+  [elements.comparisonText, elements.conclusionText].forEach((field) => { field.value = field.defaultValue; });
+  state.printPrepared = false;
+  showToast("Shaine’s completed answers were restored.");
 }
 
 function setEngineState(className, label) {
@@ -520,6 +535,8 @@ elements.resetButton.addEventListener("click", resetDefaults);
 elements.copyCodeButton.addEventListener("click", copyPythonCode);
 elements.downloadResultsButton.addEventListener("click", downloadComparison);
 elements.printButton.addEventListener("click", printReport);
+elements.visitorAnswerButton.addEventListener("click", startVisitorAnswers);
+elements.restoreAnswersButton.addEventListener("click", restoreOwnerAnswers);
 elements.comparisonText.addEventListener("input", () => { state.printPrepared = false; });
 elements.conclusionText.addEventListener("input", () => { state.printPrepared = false; });
 $$('[data-download]').forEach((button) => button.addEventListener("click", () => {

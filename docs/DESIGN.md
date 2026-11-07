@@ -9,6 +9,7 @@ Last updated: 2026-11-07
 - Implement and test one laboratory at a time.
 - Proceed to the next laboratory only after the current activity is approved.
 - Do not treat proposals or recommended defaults as approved decisions.
+- Show Shaine’s completed responses by default in every laboratory report while allowing visitors to write their own and restore the submitted answers.
 
 ## Overall Website Design
 
@@ -69,6 +70,7 @@ Reference received: 2026-11-06
 - 2026-11-07: User approved all recommended Lab 02 choices: Yellow Bee-Line Edge Explorer, synchronized three-panel workspace, live Gaussian/Sobel/Canny controls, overlay and density enhancements, downloads, and a two-page A4 portrait report.
 - 2026-11-07: Lab 02 implemented and browser-tested. The OpenCV.js self-test passed Gaussian preprocessing, Sobel magnitude, and Canny detection; the provided seal processed successfully, visual QA passed, and print QA confirmed exactly two A4 portrait pages with complete evidence, code, comparison, and reflection. Awaiting user approval before Lab 03 planning.
 - 2026-11-07: Lab 02 PDF controls refined at the user's request. The Save PDF button now sits below the documentation fields, and the print dimensions were corrected to prevent an extra blank page. Headless print QA confirmed exactly two A4 portrait pages.
+- 2026-11-07: Laboratory reports now present Shaine’s completed answers by default so instructors see the submitted responses immediately. Labs 01 and 02 also provide visitor-only “Write your own” and “Restore Shaine’s answers” controls; this pattern will continue in Labs 03–07. Lab 01 print QA confirmed the completed responses still fit on one A4 portrait page.
 - 2026-11-07: Removed Lab 02’s duplicate lower PDF button. The single header action now renders all three evidence results directly to print canvases before opening the two-page PDF dialog, eliminating the image-loading race.
 
 ## Lab 02 — Edge Detection
