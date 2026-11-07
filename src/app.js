@@ -77,6 +77,27 @@ if (reducedMotion || !("IntersectionObserver" in window)) {
 }
 
 const objectStage = document.querySelector(".hero__objects");
+const collageDuplicates = [
+  [".pixel-sprite--frog", "collage--frog-2"],
+  [".pixel-sprite--bee", "collage--bee-2"],
+  [".pixel-sprite--bee", "collage--bee-3"],
+  [".pixel-sprite--mushroom", "collage--mushroom-2"],
+  [".object--eye", "collage--eye-2"],
+  [".object--pixels", "collage--pixels-2"],
+  [".object--matrix", "collage--matrix-2"],
+];
+
+if (objectStage) {
+  collageDuplicates.forEach(([selector, className]) => {
+    const source = objectStage.querySelector(selector);
+    if (!source) return;
+
+    const duplicate = source.cloneNode(true);
+    duplicate.classList.add("object--duplicate", className);
+    objectStage.append(duplicate);
+  });
+}
+
 const movableObjects = objectStage ? [...objectStage.querySelectorAll(".object:not(.pixel-girl)")] : [];
 const objectNames = [
   ["pixel-sprite--frog", "Pixel frog"],
