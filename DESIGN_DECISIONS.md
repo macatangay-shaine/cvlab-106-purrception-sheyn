@@ -52,6 +52,7 @@ Reference received: 2026-11-06
 - 2026-11-06: Interactive approval workflow established. Overall website direction is the current decision stage.
 - 2026-11-06: User approved the website name, subtitle, palette, typography, homepage structure, navigation direction, and illustration style. Shared homepage foundation authorized; Lab 01 remains pending separate planning and approval.
 - 2026-11-07: Shared homepage foundation implemented as a responsive static site in `dist/`. Structural checks, JavaScript syntax checks, local HTTP checks, and desktop browser visual QA passed. Awaiting user approval before Lab 01 requirement analysis and personalization planning.
+- 2026-11-07: Homepage masthead identity updated to “BSCS 4A: Macatangay, Shaine.”
 - 2026-11-07: Lab 01 instructor document analyzed. Required functionality recorded; visual theme, workspace layout, interactions, optional enhancements, and results presentation await user selection.
 - 2026-11-07: User approved all recommended Lab 01 choices and combined the Pink Pixel Studio editor with the retro photo-booth concept.
 - 2026-11-07: Lab 01 implemented and browser-tested. The OpenCV self-test passed image loading, pixel editing, grayscale conversion, resizing, 90-degree rotation, cropping, and the complete 6/6 evidence workflow. Awaiting user review before any Lab 02 work.
