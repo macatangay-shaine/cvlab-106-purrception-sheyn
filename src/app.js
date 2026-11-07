@@ -75,3 +75,143 @@ if (reducedMotion || !("IntersectionObserver" in window)) {
 
   revealItems.forEach((item) => revealObserver.observe(item));
 }
+
+const objectStage = document.querySelector(".hero__objects");
+const movableObjects = objectStage ? [...objectStage.querySelectorAll(".object")] : [];
+const objectNames = [
+  ["pixel-girl", "Black-and-white girl head"],
+  ["pixel-sprite--frog", "Pixel frog"],
+  ["pixel-sprite--bee", "Pixel bee"],
+  ["pixel-sprite--mushroom", "Pixel mushroom"],
+  ["pixel-sprite--cat", "Pixel cat"],
+  ["object--asterisk", "Asterisk"],
+  ["object--eye", "Computer vision eye"],
+  ["object--pixels", "Pixel cube"],
+  ["object--camera", "Camera"],
+  ["object--magnifier", "Magnifier"],
+  ["object--matrix", "Pixel matrix"],
+];
+
+function getObjectName(object) {
+  return objectNames.find(([className]) => object.classList.contains(className))?.[1] || "Visual object";
+}
+
+function clamp(value, minimum, maximum) {
+  return Math.min(Math.max(value, minimum), Math.max(minimum, maximum));
+}
+
+function anchorObject(object) {
+  if (!objectStage) return { x: 0, y: 0 };
+  if (object.classList.contains("is-moved")) {
+    return {
+      x: Number.parseFloat(object.style.left) || 0,
+      y: Number.parseFloat(object.style.top) || 0,
+    };
+  }
+
+  const stageBounds = objectStage.getBoundingClientRect();
+  const objectBounds = object.getBoundingClientRect();
+  const position = {
+    x: objectBounds.left - stageBounds.left,
+    y: objectBounds.top - stageBounds.top,
+  };
+
+  object.style.left = `${position.x}px`;
+  object.style.top = `${position.y}px`;
+  object.style.right = "auto";
+  object.style.bottom = "auto";
+  object.classList.add("is-moved");
+  return position;
+}
+
+function moveObject(object, x, y) {
+  if (!objectStage) return;
+  const maximumX = objectStage.clientWidth - object.offsetWidth;
+  const maximumY = objectStage.clientHeight - object.offsetHeight;
+  object.style.left = `${clamp(x, 0, maximumX)}px`;
+  object.style.top = `${clamp(y, 0, maximumY)}px`;
+}
+
+function resetObject(object) {
+  object.classList.remove("is-moved", "is-dragging");
+  object.style.removeProperty("left");
+  object.style.removeProperty("top");
+  object.style.removeProperty("right");
+  object.style.removeProperty("bottom");
+}
+
+movableObjects.forEach((object) => {
+  const objectName = getObjectName(object);
+  object.draggable = false;
+  object.tabIndex = 0;
+  object.setAttribute("role", "button");
+  object.setAttribute("aria-label", `${objectName}. Draggable visual object.`);
+  object.setAttribute("aria-describedby", "object-move-instructions");
+  object.removeAttribute("aria-hidden");
+
+  object.addEventListener("dragstart", (event) => event.preventDefault());
+
+  object.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    const objectBounds = object.getBoundingClientRect();
+    anchorObject(object);
+    object.classList.add("is-dragging");
+    object.dataset.dragOffsetX = String(event.clientX - objectBounds.left);
+    object.dataset.dragOffsetY = String(event.clientY - objectBounds.top);
+    object.setPointerCapture(event.pointerId);
+    object.focus({ preventScroll: true });
+  });
+
+  object.addEventListener("pointermove", (event) => {
+    if (!object.classList.contains("is-dragging") || !objectStage) return;
+    const stageBounds = objectStage.getBoundingClientRect();
+    const offsetX = Number.parseFloat(object.dataset.dragOffsetX) || 0;
+    const offsetY = Number.parseFloat(object.dataset.dragOffsetY) || 0;
+    moveObject(object, event.clientX - stageBounds.left - offsetX, event.clientY - stageBounds.top - offsetY);
+  });
+
+  const finishDrag = (event) => {
+    if (!object.classList.contains("is-dragging")) return;
+    object.classList.remove("is-dragging");
+    if (object.hasPointerCapture(event.pointerId)) object.releasePointerCapture(event.pointerId);
+  };
+
+  object.addEventListener("pointerup", finishDrag);
+  object.addEventListener("pointercancel", finishDrag);
+  object.addEventListener("dblclick", () => resetObject(object));
+
+  object.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      resetObject(object);
+      return;
+    }
+
+    const direction = {
+      ArrowLeft: [-1, 0],
+      ArrowRight: [1, 0],
+      ArrowUp: [0, -1],
+      ArrowDown: [0, 1],
+    }[event.key];
+    if (!direction) return;
+
+    event.preventDefault();
+    const position = anchorObject(object);
+    const step = event.shiftKey ? 24 : 8;
+    moveObject(object, position.x + direction[0] * step, position.y + direction[1] * step);
+  });
+});
+
+let resizeFrame;
+window.addEventListener("resize", () => {
+  window.cancelAnimationFrame(resizeFrame);
+  resizeFrame = window.requestAnimationFrame(() => {
+    movableObjects.filter((object) => object.classList.contains("is-moved")).forEach((object) => {
+      moveObject(
+        object,
+        Number.parseFloat(object.style.left) || 0,
+        Number.parseFloat(object.style.top) || 0,
+      );
+    });
+  });
+});

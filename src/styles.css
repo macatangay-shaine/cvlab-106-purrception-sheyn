@@ -283,6 +283,24 @@ svg {
   margin: 0;
 }
 
+.hero__drag-tip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1.45rem 0 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(23, 23, 22, 0.3);
+  font-size: 0.56rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.hero__drag-tip span {
+  color: #a94070;
+  font-size: 0.9rem;
+}
+
 .hero__objects {
   position: relative;
   min-height: 40rem;
@@ -290,12 +308,42 @@ svg {
 
 .object {
   position: absolute;
+  cursor: grab;
   filter: drop-shadow(0 7px 0 rgba(23, 23, 22, 0.05));
+  touch-action: none;
   transition: transform 250ms ease;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .object:hover {
   transform: translateY(-0.45rem) rotate(2deg);
+}
+
+.object.is-moved,
+.object.is-dragging {
+  animation: none !important;
+}
+
+.object.is-dragging {
+  z-index: 12;
+  cursor: grabbing;
+  filter: drop-shadow(0.85rem 1rem 0 rgba(23, 23, 22, 0.16));
+  transform: none !important;
+  transition: none;
+}
+
+.object-move-instructions {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .pixel-girl {
