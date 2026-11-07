@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="lab02.css" />
+    <link rel="stylesheet" href="lab02.css?v=20261107-observation-guide" />
   </head>
 
   <body>
@@ -152,6 +152,43 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="observation-guide" aria-labelledby="observation-guide-title">
+        <header class="observation-guide__heading">
+          <div>
+            <p class="section-kicker">Real-life connection + observation guide</p>
+            <h2 id="observation-guide-title">What should you notice?</h2>
+          </div>
+          <p>Use this guide immediately after the detector. Adjust only one control at a time, then compare the same object boundary in the original, Sobel, and Canny views.</p>
+        </header>
+        <div class="observation-guide__grid">
+          <article class="observation-card observation-card--example">
+            <span>Real-life example</span>
+            <h3>Lane, document, and medical boundaries</h3>
+            <p>Edge detection helps a road system trace lane markings, a scanner locate a page, and a medical tool emphasize the boundary of a structure before measurement or segmentation.</p>
+          </article>
+          <article class="observation-card">
+            <span>Try this</span>
+            <h3>Change → compare → explain</h3>
+            <ol>
+              <li><span>01</span><div><strong>Change direction</strong><p>Switch Sobel between X, Y, and Magnitude. Follow the same vertical and horizontal boundaries.</p></div></li>
+              <li><span>02</span><div><strong>Change smoothing</strong><p>Increase Gaussian blur from 3 × 3 to 7 × 7 and watch fine texture disappear before edge detection.</p></div></li>
+              <li><span>03</span><div><strong>Change thresholds</strong><p>Lower both Canny thresholds, then raise them. Compare the number of contours and the live edge-density percentage.</p></div></li>
+            </ol>
+          </article>
+          <article class="observation-card">
+            <span>Look for</span>
+            <h3>Visible evidence</h3>
+            <ul>
+              <li>Sobel X emphasizes vertical boundaries; Sobel Y emphasizes horizontal boundaries.</li>
+              <li>Stronger blur removes small noisy edges but can weaken fine real details.</li>
+              <li>Low Canny thresholds produce more contours and noise; high thresholds preserve only strong edges.</li>
+              <li>Canny produces thin binary contours, while Sobel displays gradient strength.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="observation-guide__tip"><strong>Not seeing the change?</strong> Turn on the Canny overlay, watch the edge-density value, and compare one high-contrast corner instead of judging the entire image at once.</p>
       </section>
 
       <section class="method-section" aria-labelledby="method-title">

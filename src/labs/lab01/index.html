@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../styles.css" />
-    <link rel="stylesheet" href="lab01.css" />
+    <link rel="stylesheet" href="lab01.css?v=20261107-observation-guide" />
   </head>
 
   <body class="lab-page">
@@ -197,6 +197,43 @@
             </section>
           </aside>
         </div>
+      </section>
+
+      <section class="observation-guide" aria-labelledby="observation-guide-title">
+        <header class="observation-guide__heading">
+          <div>
+            <p class="section-kicker">Real-life connection + observation guide</p>
+            <h2 id="observation-guide-title">What should you notice?</h2>
+          </div>
+          <p>Use this guide immediately after the editing desk. Apply one operation at a time so you can connect each action to a visible or measurable change.</p>
+        </header>
+        <div class="observation-guide__grid">
+          <article class="observation-card observation-card--example">
+            <span>Real-life example</span>
+            <h3>Phone editing and document scanning</h3>
+            <p>A photo editor uses cropping, resizing, rotation, grayscale conversion, and pixel values to prepare images for social media, identification cards, scanned documents, and later computer-vision processing.</p>
+          </article>
+          <article class="observation-card">
+            <span>Try this</span>
+            <h3>Change → compare → explain</h3>
+            <ol>
+              <li><span>01</span><div><strong>Inspect first</strong><p>Load a colorful image, select a pixel, and compare its browser RGBA values with the Python BGR order.</p></div></li>
+              <li><span>02</span><div><strong>Transform separately</strong><p>Apply grayscale, crop, resize, and rotation one at a time. Check the canvas dimensions and history after each operation.</p></div></li>
+              <li><span>03</span><div><strong>Change one pixel</strong><p>Choose a high-contrast color, edit one pixel, and use the magnified 7 × 7 grid to locate the small change.</p></div></li>
+            </ol>
+          </article>
+          <article class="observation-card">
+            <span>Look for</span>
+            <h3>Visible evidence</h3>
+            <ul>
+              <li>Grayscale removes hue while preserving light and dark structure.</li>
+              <li>Cropping removes outside pixels; resizing changes resolution and may soften detail.</li>
+              <li>A 90° rotation swaps the width and height of a non-square image.</li>
+              <li>A single-pixel edit is easiest to verify through the inspector, not from the full image.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="observation-guide__tip"><strong>Not seeing the change?</strong> Compare the dimensions, channel values, history list, and magnified pixel grid. Some operations change image data more clearly than the full-size preview.</p>
       </section>
 
       <div class="print-sheet">

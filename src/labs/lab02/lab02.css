@@ -708,6 +708,26 @@ input[type="range"] {
   white-space: nowrap;
 }
 
+.observation-guide { padding: clamp(4rem,7vw,7rem) var(--page-pad); border-bottom: var(--border); background: #fffaf0; }
+.observation-guide__heading { display: grid; grid-template-columns: 1fr minmax(18rem,.55fr); gap: 2rem; align-items: end; max-width: 1500px; margin: 0 auto 2.5rem; }
+.observation-guide__heading h2 { margin: .45rem 0 0; font-size: clamp(3rem,5vw,5.5rem); }
+.observation-guide__heading > p { margin: 0; color: var(--muted); line-height: 1.75; }
+.observation-guide__grid { display: grid; grid-template-columns: .9fr 1.15fr 1fr; gap: 1rem; max-width: 1500px; margin: 0 auto; }
+.observation-card { min-width: 0; padding: clamp(1.2rem,2.5vw,2rem); border: 2px solid var(--ink); background: var(--paper); box-shadow: 7px 7px 0 var(--yellow-light); }
+.observation-card--example { background: var(--yellow); }
+.observation-card > span { display: inline-block; margin-bottom: 1rem; padding: .35rem .55rem; border: 1px solid currentColor; font-size: .58rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.observation-card h3 { margin: 0; font-size: clamp(1.55rem,2.3vw,2.35rem); }
+.observation-card > p { margin: 1rem 0 0; line-height: 1.75; }
+.observation-card ol,.observation-card ul { margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.observation-card ol li { display: grid; grid-template-columns: 2.1rem 1fr; gap: .65rem; padding: .8rem 0; border-top: 1px solid var(--ink); }
+.observation-card ol li > span { color: var(--orange); font: 800 1.1rem var(--display); }
+.observation-card li strong { font: 700 1rem var(--display); text-transform: uppercase; }
+.observation-card li p { margin: .15rem 0 0; font-size: .7rem; line-height: 1.55; }
+.observation-card ul li { position: relative; padding: .75rem 0 .75rem 1.3rem; border-top: 1px solid var(--ink); font-size: .75rem; line-height: 1.55; }
+.observation-card ul li::before { position: absolute; top: .75rem; left: 0; color: var(--orange); content: "●"; }
+.observation-guide__tip { max-width: 1500px; margin: 1rem auto 0; padding: 1rem 1.2rem; border: 1px solid var(--ink); background: var(--ink); color: white; font-size: .72rem; line-height: 1.6; }
+.observation-guide__tip strong { color: var(--yellow-light); text-transform: uppercase; }
+
 .method-section {
   display: grid;
   grid-template-columns: minmax(20rem, 0.7fr) minmax(0, 1.3fr);
@@ -1034,6 +1054,9 @@ input[type="range"] {
     grid-template-columns: repeat(3, minmax(14rem, 1fr));
     overflow-x: auto;
   }
+
+  .observation-guide__grid { grid-template-columns: 1fr 1fr; }
+  .observation-card--example { grid-column: 1 / -1; }
 }
 
 @media (max-width: 820px) {
@@ -1055,10 +1078,14 @@ input[type="range"] {
   }
 
   .section-heading,
+  .observation-guide__heading,
+  .observation-guide__grid,
   .method-section,
   .reflection-grid {
     grid-template-columns: 1fr;
   }
+
+  .observation-card--example { grid-column: auto; }
 
   .control-rail {
     grid-template-columns: 1fr 1fr;
