@@ -347,14 +347,21 @@ svg {
 }
 
 .pixel-girl {
-  top: 28%;
-  left: 39%;
+  top: 32%;
+  left: 42%;
   z-index: 3;
-  width: clamp(11rem, 17vw, 15rem);
+  width: clamp(8.5rem, 12vw, 11rem);
   height: auto;
+  cursor: default;
   image-rendering: pixelated;
   filter: drop-shadow(0.75rem 0.9rem 0 rgba(23, 23, 22, 0.13));
-  animation: pixel-float 5.2s ease-in-out infinite;
+  pointer-events: none;
+  animation: none;
+  transform: none;
+}
+
+.pixel-girl:hover {
+  transform: none;
 }
 
 .pixel-sprite {
@@ -1414,9 +1421,9 @@ svg {
   }
 
   .pixel-girl {
-    top: 18%;
-    left: 48%;
-    width: clamp(10rem, 30vw, 13rem);
+    top: 25%;
+    left: 52%;
+    width: 9rem;
   }
 
   .featured {
@@ -1540,9 +1547,9 @@ svg {
   }
 
   .pixel-girl {
-    top: 15%;
-    left: 43%;
-    width: 9.5rem;
+    top: 19%;
+    left: 47%;
+    width: 7.5rem;
   }
 
   .object--camera { right: 4%; }

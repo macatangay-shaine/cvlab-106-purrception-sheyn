@@ -77,9 +77,8 @@ if (reducedMotion || !("IntersectionObserver" in window)) {
 }
 
 const objectStage = document.querySelector(".hero__objects");
-const movableObjects = objectStage ? [...objectStage.querySelectorAll(".object")] : [];
+const movableObjects = objectStage ? [...objectStage.querySelectorAll(".object:not(.pixel-girl)")] : [];
 const objectNames = [
-  ["pixel-girl", "Black-and-white girl head"],
   ["pixel-sprite--frog", "Pixel frog"],
   ["pixel-sprite--bee", "Pixel bee"],
   ["pixel-sprite--mushroom", "Pixel mushroom"],
